@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendário METALÚRGICOS/JUNDIAÍ - Paulista Iniciação A2 2026</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #f5f5f5;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --accent-red: #c8102e;
+      --accent-red-dark: #a00d24;
+      --accent-red-light: #e8354d;
+      --accent-black: #1a1a1a;
+      --accent-dark: #2c2c2c;
+      --text-primary: #1a1a1a;
+      --text-secondary: #555555;
+      --text-muted: #888888;
+      --text-white: #ffffff;
+      --border: rgba(0, 0, 0, 0.08);
+      --border-strong: rgba(0, 0, 0, 0.12);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+      --home-bg: #f0faf2;
+      --home-border: #27ae60;
+      --home-text: #1e7a3e;
+      --away-bg: #fff5f5;
+      --away-border: var(--accent-red);
+      --away-text: var(--accent-red);
+      --win-color: #27ae60;
+      --loss-color: #c8102e;
+      --draw-color: #f39c12;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+      padding: 48px 24px 40px;
+      background: linear-gradient(135deg, var(--accent-black) 0%, #333333 50%, var(--accent-red) 100%);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 30% 50%, rgba(200, 16, 46, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 18px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(4px);
+    }
+
+    .header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(13px, 2.5vw, 18px);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 24px;
+    }
+
+    .header-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-item .number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .stat-item .label {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+
+    .password-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .password-container input {
+      padding-right: 40px;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .password-toggle:hover {
+      color: var(--accent-red);
+    }
+
+    /* SCOREBOARD TOP */
+    .scoreboard-summary {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .score-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .score-pill.wins {
+      background: rgba(39, 174, 96, 0.12);
+      color: var(--win-color);
+      border: 1.5px solid rgba(39, 174, 96, 0.3);
+    }
+
+    .score-pill.losses {
+      background: rgba(200, 16, 46, 0.08);
+      color: var(--loss-color);
+      border: 1.5px solid rgba(200, 16, 46, 0.2);
+    }
+
+    .score-pill.draws {
+      background: rgba(243, 156, 18, 0.1);
+      color: var(--draw-color);
+      border: 1.5px solid rgba(243, 156, 18, 0.3);
+    }
+
+    .score-pill .pill-num {
+      font-size: 22px;
+      font-weight: 900;
+      font-family: 'Outfit', sans-serif;
+      min-width: 28px;
+      text-align: center;
+    }
+
+    /* LEGEND */
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .legend-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+    }
+
+    .legend-dot.home {
+      background: var(--home-border);
+    }
+
+    .legend-dot.away {
+      background: var(--accent-red);
+    }
+
+    /* GAMES LIST / MONTH GRID */
+    .games-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+
+    .month-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .month-header {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent-red);
+      padding: 24px 20px;
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .month-header:hover {
+      border-color: var(--accent-red);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .month-header .month-icon {
+      font-size: 18px;
+    }
+
+    .month-header .toggle-icon {
+      margin-left: auto;
+      font-size: 14px;
+      color: var(--accent-red);
+      transition: transform 0.3s ease;
+    }
+
+    .month-header.collapsed .toggle-icon {
+      transform: rotate(-90deg);
+    }
+
+    .month-group.expanded {
+      grid-column: 1 / -1;
+    }
+
+    .month-content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin 0.4s ease-in-out;
+      max-height: 5000px;
+      opacity: 1;
+      margin-top: 12px;
+      grid-column: 1 / -1;
+      /* spans full width if we wanted row expansion, but here we keep it in group */
+    }
+
+    .month-content.collapsed {
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+    }
+
+    /* NEXT GAME HIGHLIGHT */
+    .next-game-section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--accent-black);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 24px;
+      background: var(--accent-red);
+      border-radius: 4px;
+    }
+
+    .game-card.highlighted-next {
+      border: 2px solid var(--accent-red);
+      box-shadow: 0 8px 24px rgba(200, 16, 46, 0.15);
+      transform: scale(1.02);
+      z-index: 10;
+    }
+
+    .game-card.highlighted-next:hover {
+      transform: scale(1.03);
+    }
+
+    .game-card.highlighted-next .game-meta::after {
+      content: 'PRÓXIMO JOGO';
+      background: var(--accent-red);
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-left: auto;
+      animation: pulseAlert 2s infinite;
+    }
+
+    @keyframes pulseAlert {
+      0% {
+        box-shadow: 0 0 0 0 rgba(200, 16, 46, 0.4);
+      }
+
+      70% {
+        box-shadow: 0 0 0 6px rgba(200, 16, 46, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(200, 16, 46, 0);
+      }
+    }
+
+    .game-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding: 18px 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .game-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+    }
+
+    .game-card.home {
+      background: var(--home-bg);
+      border-color: rgba(39, 174, 96, 0.2);
+    }
+
+    .game-card.home::before {
+      background: var(--home-border);
+    }
+
+    .game-card.away {
+      background: var(--away-bg);
+      border-color: rgba(200, 16, 46, 0.15);
+    }
+
+    .game-card.away::before {
+      background: var(--accent-red);
+    }
+
+    .game-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .game-card.has-result {
+      border-width: 2px;
+    }
+
+    .game-card.result-win {
+      border-color: rgba(39, 174, 96, 0.5);
+      background: linear-gradient(to right, rgba(39, 174, 96, 0.04), transparent 40%);
+    }
+
+    .game-card.result-win::before {
+      background: var(--win-color);
+    }
+
+    .game-card.result-loss {
+      border-color: rgba(200, 16, 46, 0.4);
+      background: linear-gradient(to right, rgba(200, 16, 46, 0.04), transparent 40%);
+    }
+
+    .game-card.result-loss::before {
+      background: var(--loss-color);
+    }
+
+    .game-card.result-draw {
+      border-color: rgba(243, 156, 18, 0.5);
+      background: linear-gradient(to right, rgba(243, 156, 18, 0.04), transparent 40%);
+    }
+
+    .game-card.result-draw::before {
+      background: var(--draw-color);
+    }
+
+    .game-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .game-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .game-round {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+
+    .game-number {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 50px;
+      color: var(--text-muted);
+    }
+
+    .game-type-badge {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
+    .game-type-badge.home {
+      background: rgba(39, 174, 96, 0.12);
+      color: var(--home-text);
+      border: 1px solid rgba(39, 174, 96, 0.25);
+    }
+
+    .game-type-badge.away {
+      background: rgba(200, 16, 46, 0.1);
+      color: var(--accent-red);
+      border: 1px solid rgba(200, 16, 46, 0.2);
+    }
+
+    .game-teams {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .team-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent-black);
+    }
+
+    .team-name.highlight {
+      color: var(--accent-red);
+    }
+
+    .vs-badge {
+      font-size: 11px;
+      font-weight: 900;
+      color: var(--text-muted);
+      padding: 2px 10px;
+      background: rgba(0, 0, 0, 0.04);
+      border-radius: 50px;
+    }
+
+    .game-details {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .game-details .detail-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .detail-icon {
+      font-size: 13px;
+      width: 18px;
+      text-align: center;
+    }
+
+    /* RESULT DISPLAY */
+    .result-display {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .result-scoreboard {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      background: var(--accent-black);
+      border-radius: 10px;
+      overflow: hidden;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .result-score-home,
+    .result-score-away {
+      padding: 6px 18px;
+      color: #fff;
+      min-width: 52px;
+      text-align: center;
+    }
+
+    .result-score-separator {
+      background: rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 6px 10px;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .result-outcome-badge {
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .result-outcome-badge.win {
+      background: rgba(39, 174, 96, 0.15);
+      color: var(--win-color);
+      border: 1.5px solid rgba(39, 174, 96, 0.3);
+    }
+
+    .result-outcome-badge.loss {
+      background: rgba(200, 16, 46, 0.1);
+      color: var(--loss-color);
+      border: 1.5px solid rgba(200, 16, 46, 0.25);
+    }
+
+    .result-outcome-badge.draw {
+      background: rgba(243, 156, 18, 0.1);
+      color: var(--draw-color);
+      border: 1.5px solid rgba(243, 156, 18, 0.3);
+    }
+
+    .result-pending {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px dashed rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .result-pending:hover {
+      background: rgba(200, 16, 46, 0.06);
+      border-color: var(--accent-red);
+      color: var(--accent-red);
+    }
+
+    /* QR CODE SECTION */
+    .qr-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      min-width: 105px;
+    }
+
+    .qr-code {
+      width: 96px;
+      height: 96px;
+      border-radius: 10px;
+      border: 2px solid rgba(200, 16, 46, 0.15);
+      background: white;
+      padding: 4px;
+      transition: transform 0.3s ease;
+      display: block;
+    }
+
+    .qr-code:hover {
+      transform: scale(1.12);
+      border-color: var(--accent-red);
+    }
+
+    .qr-code img {
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+    }
+
+    .qr-label {
+      font-size: 10px;
+      color: var(--accent-red);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+    }
+
+    .home-badge-qr {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 96px;
+      height: 96px;
+      border-radius: 10px;
+      border: 2px dashed rgba(39, 174, 96, 0.3);
+      background: rgba(39, 174, 96, 0.04);
+      font-size: 11px;
+      color: var(--home-text);
+      text-align: center;
+      padding: 8px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .home-label {
+      font-size: 10px;
+      color: var(--home-text);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+    }
+
+    /* EDIT RESULT BUTTON */
+    .btn-edit-result {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 8px;
+      padding: 5px 12px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .btn-edit-result:hover {
+      color: var(--accent-red);
+      background: rgba(200, 16, 46, 0.05);
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px 28px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+      position: relative;
+      animation: modalIn 0.25s ease;
+    }
+
+    @keyframes modalIn {
+      from {
+        transform: translateY(20px) scale(0.97);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0, 0, 0, 0.06);
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background: rgba(200, 16, 46, 0.1);
+      color: var(--accent-red);
+    }
+
+    .modal h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--accent-black);
+      margin-bottom: 4px;
+    }
+
+    .modal .modal-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .modal label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+      margin-top: 14px;
+    }
+
+    .modal input[type="password"],
+    .modal input[type="number"],
+    .modal input[type="text"] {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border-strong);
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--text-primary);
+      transition: border-color 0.2s;
+      background: #fafafa;
+    }
+
+    .modal input:focus {
+      outline: none;
+      border-color: var(--accent-red);
+      background: #fff;
+    }
+
+    .score-inputs {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      gap: 10px;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    .score-inputs .score-sep {
+      text-align: center;
+      font-weight: 900;
+      font-size: 18px;
+      color: var(--text-muted);
+    }
+
+    .score-team-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .btn-save {
+      flex: 1;
+      padding: 12px;
+      background: var(--accent-red);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-save:hover {
+      background: var(--accent-red-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-clear {
+      padding: 12px 18px;
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--text-secondary);
+      border: none;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-clear:hover {
+      background: rgba(200, 16, 46, 0.08);
+      color: var(--accent-red);
+    }
+
+    .modal-error {
+      display: none;
+      margin-top: 10px;
+      color: var(--accent-red);
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 48px;
+      text-align: center;
+      padding: 24px;
+      color: var(--text-muted);
+      font-size: 12px;
+      border-top: 2px solid var(--border);
+    }
+
+    .footer a {
+      color: var(--accent-red);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .game-card {
+        grid-template-columns: 1fr;
+        padding: 14px 16px;
+      }
+
+      .qr-section {
+        flex-direction: row;
+        min-width: unset;
+        justify-content: flex-start;
+        gap: 10px;
+      }
+
+      .home-badge-qr,
+      .qr-code {
+        width: 76px;
+        height: 76px;
+      }
+
+      .header-stats {
+        gap: 20px;
+      }
+
+      .team-name {
+        font-size: 14px;
+      }
+
+      .scoreboard-summary {
+        gap: 10px;
+      }
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+      }
+
+      .game-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ddd;
+      }
+
+      .game-card:hover {
+        transform: none;
+      }
+
+      .header {
+        background: #1a1a1a !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .qr-code {
+        border-color: #333;
+      }
+
+      .btn-edit-result {
+        display: none;
+      }
+
+      .next-game-section {
+        display: none;
+      }
+
+      .modal-overlay {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-content">
+        <div class="badge">⚽ Federação Paulista de Futsal — SUB 9</div>
+        <h1>METALÚRGICOS / JUNDIAÍ</h1>
+        <h2>Campeonato Paulista 2026 — Categorias de Iniciação — Série A2</h2>
+        <div class="header-stats">
+          <div class="stat-item">
+            <div class="number">23</div>
+            <div class="label">Jogos</div>
+          </div>
+          <div class="stat-item">
+            <div class="number">11</div>
+            <div class="label">Em Casa</div>
+          </div>
+          <div class="stat-item">
+            <div class="number">12</div>
+            <div class="label">Fora</div>
+          </div>
+          <div class="stat-item">
+            <div class="number" id="statWins">0</div>
+            <div class="label">Vitórias</div>
+          </div>
+          <div class="stat-item">
+            <div class="number">MAR–AGO</div>
+            <div class="label">Temporada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCOREBOARD SUMMARY -->
+    <div class="scoreboard-summary" id="scoreboardSummary">
+      <div class="score-pill wins">
+        <span class="pill-num" id="totalWins">0</span>
+        <span>Vitórias</span>
+      </div>
+      <div class="score-pill draws">
+        <span class="pill-num" id="totalDraws">0</span>
+        <span>Empates</span>
+      </div>
+      <div class="score-pill losses">
+        <span class="pill-num" id="totalLosses">0</span>
+        <span>Derrotas</span>
+      </div>
+    </div>
+
+    <!-- LEGEND -->
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot home"></div>
+        <span>Jogo em Casa</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot away"></div>
+        <span>Jogo Fora — QR Code para o local</span>
+      </div>
+    </div>
+
+    <!-- NEXT GAME SECTION -->
+    <div class="next-game-section">
+      <div class="section-title">⚠️ Próximo Jogo</div>
+      <div id="nextGameContainer"></div>
+    </div>
+
+    <!-- GAMES LIST -->
+    <div class="section-title" style="margin-top: 20px;">📅 Calendário Completo</div>
+    <div class="games-list" id="gamesList"></div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      Tabela Oficial — Comunicado Oficial nº 010/26 DT — São Paulo, 09 de março de 2026<br>
+      Federação Paulista de Futebol de Salão — <a href="https://www.futsalpaulista.com.br"
+        target="_blank">www.futsalpaulista.com.br</a><br>
+      <br>📱 Aponte a câmera do celular para o QR Code e navegue até o local do jogo<br>
+      <br>🔒 Apenas usuários autorizados podem registrar resultados
+    </div>
+  </div>
+
+  <!-- MODAL DE RESULTADO -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h3 id="modalTitle">Registrar Resultado</h3>
+      <p class="modal-subtitle" id="modalSubtitle"></p>
+
+      <label>Senha de acesso</label>
+      <div class="password-container">
+        <input type="password" id="inputPassword" placeholder="••••••••" autocomplete="off">
+        <button type="button" class="password-toggle" id="togglePassword"
+          onclick="togglePasswordVisibility()">👁️</button>
+      </div>
+
+      <label>Placar</label>
+      <div class="score-inputs">
+        <div>
+          <div class="score-team-label" id="modalHomeLabel">CASA</div>
+          <input type="number" id="inputScoreHome" placeholder="0" min="0" max="99">
+        </div>
+        <div class="score-sep">×</div>
+        <div>
+          <div class="score-team-label" id="modalAwayLabel">FORA</div>
+          <input type="number" id="inputScoreAway" placeholder="0" min="0" max="99">
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px; align-items: center; margin-top: 18px; margin-bottom: 6px; padding: 0 14px;">
+        <span style="flex: 1; font-size: 13px; font-weight: 800; color: var(--accent-red); text-transform: uppercase; letter-spacing: 1px;">Jogadores</span>
+        <span style="width: 80px; text-align: center; font-size: 13px; font-weight: 800; color: var(--accent-red); text-transform: uppercase; letter-spacing: 1px;">Gols</span>
+      </div>
+      <div id="goalsContainer"
+        style="max-height: 420px; overflow-y: auto; overflow-x: hidden; border: 1.5px solid var(--border-strong); border-radius: 16px; padding: 8px; background: #fafafa; display: flex; flex-direction: column; gap: 10px;">
+        <!-- Injetado via JS -->
+      </div>
+
+      <div class="modal-error" id="modalError">Senha incorreta. Tente novamente.</div>
+
+      <div class="modal-actions">
+        <button class="btn-save" onclick="saveResult()">💾 Salvar Resultado</button>
+        <button class="btn-clear" onclick="clearResult()">🗑️ Apagar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =====================================================
+    // SENHA PARA EDIÇÃO DE RESULTADOS
+    // Altere o valor abaixo para trocar a senha
+    const RESULT_PASSWORD = "metaljundiai2026";
+    // =====================================================
+
+    const PLAYER_ICON = "icones/avatar.avif";
+
+    const PLAYERS = [
+      { id: 1, name: "Bernardo Zanini", photo: PLAYER_ICON },
+      { id: 2, name: "Miguel", photo: PLAYER_ICON },
+      { id: 3, name: "Caio", photo: PLAYER_ICON },
+      { id: 4, name: "Xerife", photo: PLAYER_ICON },
+      { id: 5, name: "Rafa lucca", photo: PLAYER_ICON },
+      { id: 6, name: "Rafinha", photo: PLAYER_ICON },
+      { id: 7, name: "Gabriel", photo: PLAYER_ICON },
+      { id: 8, name: "Juninho", photo: PLAYER_ICON },
+      { id: 9, name: "Davi lucca", photo: PLAYER_ICON },
+      { id: 10, name: "Ramalho", photo: PLAYER_ICON },
+      { id: 11, name: "Miguel Duca", photo: PLAYER_ICON },
+      { id: 12, name: "Pedro", photo: PLAYER_ICON },
+      { id: 14, name: "Bernardo Marques", photo: PLAYER_ICON },
+      { id: 15, name: "Moisés", photo: PLAYER_ICON },
+      { id: 17, name: "Otto Pitombeira", photo: "fotos_jogadores/17-Otto Pitombeira.png" },
+      { id: 20, name: "Davizinho", photo: "fotos_jogadores/20-davizinho.png" }
+    ].map(p => ({ ...p, displayName: `${p.id} - ${p.name}` }));
+
+    const HOME_VENUE = "Ginásio do Sindicato dos Metalúrgicos de Jundiaí";
+    const HOME_ADDRESS = "R. Paulo Colin, 600, Vila Augusta, Jundiaí, SP";
+
+    const games = [
+      {
+        round: "1ª Rodada",
+        gameNum: "08",
+        date: "15/03/2026",
+        time: "16h15",
+        home: "CLUBE BATALHA",
+        away: "METALÚRGICOS/JUNDIAÍ",
+        venue: "Ginásio Batalha Sport Center",
+        address: "R. Ângelo Pereira, 310, Vila Matilde, São Paulo, SP",
+        isHome: false,
+        mapsQuery: "Batalha Sport Center Rua Ângelo Pereira 310 Vila Matilde São Paulo SP",
+        // Resultado oficial (fixo no código para todos verem)
+        finalScoreHome: 2,
+        finalScoreAway: 2,
+        finalGoals: '{"17 - Otto Pitombeira":2}'
+      },
+      {
+        round: "2ª Rodada",
+        gameNum: "16",
+        date: "21/03/2026",
+        time: "10h45",
+        home: "METALÚRGICOS/JUNDIAÍ",
+        away: "SANTO ANDRÉ FUTSAL",
+        venue: HOME_VENUE,
+        address: HOME_ADDRESS,
+        isHome: true,
+        mapsQuery: "",
+        finalScoreHome: 3,
+        finalScoreAway: 2,
+        finalGoals: '{"8 - Juninho":1, "12 - Pedro":1, "1 - Bernardo Zanini":1}'
+      },
+      {
+        round: "3ª Rodada",
+        gameNum: "24",
+        date: "28/03/2026",
+        time: "10h15",
+        home: "SER CAIEIRAS",
+        away: "METALÚRGICOS/JUNDIAÍ",
+        venue: "Ginásio Ernesto Diogo de Farias",
+        address: "R. Cardeal, 351, Jardim San Diego, Caieiras, SP",
+        isHome: false,
+        mapsQuery: "Ginásio Ernesto Diogo de Farias Rua Cardeal 351 Caieiras SP"
+      },
+      {
+        round: "4ª Rodada",
+        gameNum: "41",
+        date: "11/04/2026",
+        time: "10h45",
+        home: "METALÚRGICOS/JUNDIAÍ",
+        away: "AD SUZANO",
+        venue: HOME_VENUE,
+        address: HOME_ADDRESS,
+        isHome: true,
+        mapsQuery: ""
+      },
+      {
+        round: "5ª Rodada",
+        gameNum: "57",
+        date: "19/04/2026",
+        time: "10h15",
+        home: "IFA BONS DE BOLA/CONEXÃO 29",
+        away: "METALÚRGICOS/JUNDIAÍ",
+        venue: "Ginásio C.E. Itaquera / Sindicato Securitários",
+        address: "R. Ioneji Matsubayashi, 982, Itaquera, São Paulo, SP",
+        isHome: false,
+        mapsQuery: "Centro Esportivo Sindicato Securitários Itaquera Rua Ioneji Matsubayashi São Paulo SP"
+      },
+      {
+        round: "6ª Rodada",
+        gameNum: "67",
+        date: "25/04/2026",
+        time: "10h45",
+        home: "METALÚRGICOS/JUNDIAÍ",
+        away: "AE RIVER",
+        venue: HOME_VENUE,
+        address: HOME_ADDRESS,
+        isHome: true,
+        mapsQuery: ""
+      },
+      {
+        round: "7ª Rodada",
+        gameNum: "78",
+        date: "02/05/2026",
+        time: "16h15",
+        home: "ADEF FUTSAL",
+        away: "METALÚRGICOS/JUNDIAÍ",
+        venue: "Ginásio Toca do Tigre",
+        address: "Av. Antônio Mathias de Camargo, 459 - Centro, Cotia - SP, 06700-158",
+        isHome: false,
+        mapsQuery: "Ginásio Toca do Tigre Rua Pará 700 Cotia SP"
+      },
+      {
+        round: "8ª Rodada",
+        gameNum: "90",
+        date: "09/05/2026",
+        time: "10h45",
+        home: "METALÚRGICOS/JUNDIAÍ",
+        away: "WIMPRO VEGUS GUARULHOS",
+        venue: HOME_VENUE,
+        address: HOME_ADDRESS,
+        isHome: true,
+        mapsQuery: ""
+      },
+      {
+        round: "9ª Rodada",
+        gameNum: "106",
+        date: "17/05/2026",
+        time: "16h15",
+        home: "GDR 7 DE SETEMBRO/BATE BOLA",
+        away: "METALÚRGICOS/JUNDIAÍ",
+        venue: "Ginásio Grêmio Desportivo e Recreativo 7 Setembro",
+        address: "R. Bom Jesus, 599 - Vila Reg. Feijó, São Paulo - SP, 03344-000",
+        isHome: false,
+        mapsQuery: "Grêmio Desportivo Recreativo Sete de Setembro Rua Bom Jesus 599 Água Rasa São Paulo SP"
+      },
+      {
+        round: "10ª Rodada",
+        gameNum: "113",
+        date: "23/05/2026",
+        time: "10h45",
+        home: "METALÚRGICOS/JUNDIAÍ",
+        away: "MX7 FUTSAL",
+        venue: HOME_VENUE,
+        address: HOME_ADDRESS,
+        isHome: true,
+        mapsQuery: ""
+      },
+      {
+        round: "11ª Rodada",
+        gameNum: "122",
+        date: "30/05/2026",
+        time: "10h15",
+        home: "ADC MERCEDES BENZ",
+        away: "METALÚRGICOS/JUNDIAÍ",
+        venue: "Ginásio Arena Mercedes / Itaú G1",
+        address: "R. Brejaúva, 337, Vila São José, Diadema, SP",
+        isHome: false,
+        mapsQuery: "ADC Mercedes Benz Rua Brejaúva 337 Diadema SP"
+      },
+      {
+        round: "12ª Rodada",
+        gameNum: "136",
+        date: "04/06/2026",
+        time: "10h45",
+        home: "METALÚRGICOS/JUNDIAÍ",
+        away: "SPORT BENFICA MC",
+        venue: HOME_VENUE,
+        address: HOME_ADDRESS,
+        isHome: true,
+        mapsQuery: ""
+      },
+      {
+        round: "13ª Rodada",
+        gameNum: "150",
+        date: "06/06/2026",
+        time: "16h15",
+        home: "GR GREMETAL",
+        away: "METALÚRGICOS/JUNDIAÍ",
+        venue: "Ginásio do Jabaquara AC",
+        address: "Av. Francisco Ferreira Canto, 351 - Caneleira, Santos - SP, 11085-600",
+        isHome: false,
+        mapsQuery: "Jabaquara Atlético Clube Santos SP ginásio futsal"
+      },
+      {
+        round: "14ª Rodada",
+        gameNum: "159",
+        date: "13/06/2026",
+        time: "10h15",
+        home: "CAAS FUTMAX",
+        away: "METALÚRGICOS/JUNDIAÍ",
+        venue: "Ginásio Poliesportivo Prof. João Carlos de Camargo",
+        address: "Av. 31 de Março, 327, Altos de Votorantim, Votorantim, SP",
+        isHome: false,
+        mapsQuery: "Ginásio Poliesportivo João Carlos de Camargo Avenida 31 de Março 327 Votorantim SP"
+      },
+      {
+        round: "15ª Rodada",
+        gameNum: "179",
+        date: "21/06/2026",
+        time: "15h15",
+        home: "METALÚRGICOS/JUNDIAÍ",
+        away: "AE FRIBURGO",
+        venue: HOME_VENUE,
+        address: HOME_ADDRESS,
+        isHome: true,
+        mapsQuery: ""
+      },
+      {
+        round: "16ª Rodada",
+        gameNum: "183",
+        date: "27/06/2026",
+        time: "10h15",
+        home: "UNIÃO MAUÁ FUTSAL",
+        away: "METALÚRGICOS/JUNDIAÍ",
+        venue: "Ginásio Grêmio Esportivo Mauaense (Fábrica de Artes)",
+        address: "R. Pedro de Toledo, 341, Parque São Vicente, Mauá, SP",
+        isHome: false,
+        mapsQuery: "Grêmio Esportivo Mauaense Rua Pedro de Toledo 341 Mauá SP"
+      },
+      {
+        round: "17ª Rodada",
+        gameNum: "196",
+        date: "04/07/2026",
+        time: "10h45",
+        home: "METALÚRGICOS/JUNDIAÍ",
+        away: "AD SANTO ANDRÉ FUTSAL",
+        venue: HOME_VENUE,
+        address: HOME_ADDRESS,
+        isHome: true,
+        mapsQuery: ""
+      },
+      {
+        round: "18ª Rodada",
+        gameNum: "210",
+        date: "09/07/2026",
+        time: "11h15",
+        home: "OCIAN PRAIA CLUBE",
+        away: "METALÚRGICOS/JUNDIAÍ",
+        venue: "Ginásio do Ocian Praia Clube",
+        address: "R. Com. Otto Carlos Golanda, 80, Ocian, Praia Grande, SP",
+        isHome: false,
+        mapsQuery: "Ocian Praia Clube Rua Comendador Otto Carlos Golanda 80 Praia Grande SP"
+      },
+      {
+        round: "19ª Rodada",
+        gameNum: "221",
+        date: "01/08/2026",
+        time: "10h45",
+        home: "METALÚRGICOS/JUNDIAÍ",
+        away: "AE CHUTE FUTSAL",
+        venue: HOME_VENUE,
+        address: HOME_ADDRESS,
+        isHome: true,
+        mapsQuery: ""
+      },
+      {
+        round: "20ª Rodada",
+        gameNum: "230",
+        date: "08/08/2026",
+        time: "10h15",
+        home: "ADC MARVEL",
+        away: "METALÚRGICOS/JUNDIAÍ",
+        venue: "Ginásio Arena Uniluz",
+        address: "R. Batista Pereira, 275 - Macuco, Santos - SP, 11015-300",
+        isHome: false,
+        mapsQuery: "ADC Marvel Ginásio Arena Uniluz futsal São Paulo SP"
+      },
+      {
+        round: "21ª Rodada",
+        gameNum: "247",
+        date: "15/08/2026",
+        time: "10h45",
+        home: "METALÚRGICOS/JUNDIAÍ",
+        away: "PAULISTA FC - MOÓCA",
+        venue: HOME_VENUE,
+        address: HOME_ADDRESS,
+        isHome: true,
+        mapsQuery: ""
+      },
+      {
+        round: "22ª Rodada",
+        gameNum: "260",
+        date: "22/08/2026",
+        time: "16h15",
+        home: "CTC VILA EMA",
+        away: "METALÚRGICOS/JUNDIAÍ",
+        venue: "Ginásio do CTC Vila Ema",
+        address: "R. Pinto da Luz, 705, Vila Ema, São Paulo, SP",
+        isHome: false,
+        mapsQuery: "CTC Vila Ema Rua Pinto da Luz 705 Vila Ema São Paulo SP"
+      },
+      {
+        round: "23ª Rodada",
+        gameNum: "269",
+        date: "29/08/2026",
+        time: "10h45",
+        home: "METALÚRGICOS/JUNDIAÍ",
+        away: "AD NANDO GRANA",
+        venue: HOME_VENUE,
+        address: HOME_ADDRESS,
+        isHome: true,
+        mapsQuery: ""
+      }
+    ];
+
+    const monthNames = {
+      '03': 'Março 2026',
+      '04': 'Abril 2026',
+      '05': 'Maio 2026',
+      '06': 'Junho 2026',
+      '07': 'Julho 2026',
+      '08': 'Agosto 2026'
+    };
+
+    const monthIcons = {
+      '03': '📅', '04': '📅', '05': '📅',
+      '06': '📅', '07': '📅', '08': '📅'
+    };
+
+    // =====================================================
+    // RESULTS STORAGE (localStorage)
+    // =====================================================
+    function getStorageKey(gameNum) {
+      return `result_game_${gameNum}`;
+    }
+
+    function loadResult(gameNum) {
+      try {
+        // Primeiro tenta carregar do localStorage (edição local)
+        const local = localStorage.getItem(getStorageKey(gameNum));
+        if (local) return JSON.parse(local);
+        
+        // Se não houver no local, verifica se há resultado fixo no array de jogos
+        const game = games.find(g => g.gameNum === gameNum);
+        if (game && game.finalScoreHome !== undefined) {
+          return {
+            homeScore: game.finalScoreHome,
+            awayScore: game.finalScoreAway,
+            goals: game.finalGoals || ''
+          };
+        }
+        return null;
+      } catch { return null; }
+    }
+
+    function saveResultToStorage(gameNum, homeScore, awayScore, goals) {
+      localStorage.setItem(getStorageKey(gameNum), JSON.stringify({ homeScore, awayScore, goals }));
+    }
+
+    function clearResultFromStorage(gameNum) {
+      localStorage.removeItem(getStorageKey(gameNum));
+    }
+
+    // =====================================================
+    // OUTCOME CALCULATION
+    // =====================================================
+    function calcOutcome(game, homeScore, awayScore) {
+      const metalHome = game.home === 'METALÚRGICOS/JUNDIAÍ';
+      const metalScore = metalHome ? homeScore : awayScore;
+      const oppScore = metalHome ? awayScore : homeScore;
+      if (metalScore > oppScore) return 'win';
+      if (metalScore < oppScore) return 'loss';
+      return 'draw';
+    }
+
+    function outcomeLabel(outcome) {
+      if (outcome === 'win') return '🏆 Vitória';
+      if (outcome === 'loss') return '❌ Derrota';
+      return '🤝 Empate';
+    }
+
+    // =====================================================
+    // UPDATE SUMMARY SCOREBOARD
+    // =====================================================
+    function updateSummary() {
+      let wins = 0, draws = 0, losses = 0;
+      games.forEach(g => {
+        const r = loadResult(g.gameNum);
+        if (r !== null) {
+          const o = calcOutcome(g, r.homeScore, r.awayScore);
+          if (o === 'win') wins++;
+          else if (o === 'draw') draws++;
+          else losses++;
+        }
+      });
+      document.getElementById('totalWins').textContent = wins;
+      document.getElementById('totalDraws').textContent = draws;
+      document.getElementById('totalLosses').textContent = losses;
+      document.getElementById('statWins').textContent = wins;
+    }
+
+    // =====================================================
+    // MAP URLS
+    // =====================================================
+    function getGoogleMapsUrl(query) {
+      return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+    }
+
+    function getQRCodeUrl(text) {
+      return `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(text)}&color=c8102e&bgcolor=ffffff&margin=1`;
+    }
+
+    // =====================================================
+    // RENDER
+    // =====================================================
+    function toggleMonth(monthId) {
+      const content = document.getElementById(monthId);
+      const header = document.getElementById('header-' + monthId);
+      const group = content.closest('.month-group');
+
+      const isCollapsed = content.classList.contains('collapsed');
+
+      // Close all others first (Accordion behavior)
+      document.querySelectorAll('.month-content').forEach(el => el.classList.add('collapsed'));
+      document.querySelectorAll('.month-header').forEach(el => el.classList.add('collapsed'));
+      document.querySelectorAll('.month-group').forEach(el => el.classList.remove('expanded'));
+
+      // Toggle current
+      if (isCollapsed) {
+        content.classList.remove('collapsed');
+        header.classList.remove('collapsed');
+        group.classList.add('expanded');
+      } else {
+        content.classList.add('collapsed');
+        header.classList.add('collapsed');
+        group.classList.remove('expanded');
+      }
+    }
+
+    function renderGames() {
+      const container = document.getElementById('gamesList');
+      const nextContainerWrapper = document.querySelector('.next-game-section');
+      const nextGameContainer = document.getElementById('nextGameContainer');
+      let currentMonth = '';
+      let html = '';
+
+      // Find Next Game
+      const nextGame = games.find(g => loadResult(g.gameNum) === null);
+
+      if (nextGame) {
+        nextContainerWrapper.style.display = 'block';
+        const typeClass = nextGame.isHome ? 'home' : 'away';
+        const typeBadge = nextGame.isHome ? 'Casa' : 'Fora';
+        const mapsUrl = nextGame.isHome ? '' : getGoogleMapsUrl(nextGame.mapsQuery);
+        const qrUrl = nextGame.isHome ? '' : getQRCodeUrl(mapsUrl);
+        const homeTeamClass = nextGame.home === 'METALÚRGICOS/JUNDIAÍ' ? 'highlight' : '';
+        const awayTeamClass = nextGame.away === 'METALÚRGICOS/JUNDIAÍ' ? 'highlight' : '';
+
+        nextGameContainer.innerHTML = `
+          <div class="game-card ${typeClass} highlighted-next" id="card-next-${nextGame.gameNum}">
+            <div class="game-info">
+              <div class="game-meta">
+                <span class="game-round">${nextGame.round}</span>
+                <span class="game-number">Jogo nº${nextGame.gameNum}</span>
+                <span class="game-type-badge ${typeClass}">${typeBadge}</span>
+              </div>
+              <div class="game-teams">
+                <span class="team-name ${homeTeamClass}">${nextGame.home}</span>
+                <span class="vs-badge">VS</span>
+                <span class="team-name ${awayTeamClass}">${nextGame.away}</span>
+              </div>
+              <div class="game-details">
+                <div class="detail-row"><span class="detail-icon">📅</span><span>${nextGame.date}</span></div>
+                <div class="detail-row"><span class="detail-icon">⏰</span><span>${nextGame.time}</span></div>
+                <div class="detail-row"><span class="detail-icon">📍</span><span>${nextGame.venue}</span></div>
+                ${nextGame.address ? `<div class="detail-row"><span class="detail-icon">🗺️</span><span>${nextGame.address}</span></div>` : ''}
+              </div>
+              <div class="result-display">
+                <span class="result-pending" onclick="openModal('${nextGame.gameNum}')">⏳ Resultado pendente — clique para registrar</span>
+              </div>
+              <button class="btn-edit-result" onclick="openModal('${nextGame.gameNum}')">✏️ Registrar resultado</button>
+            </div>
+            <div class="qr-section">
+              ${nextGame.isHome
+            ? `<div class="home-badge-qr">🏠<br>Jogo em<br>Casa</div><span class="home-label">Jundiaí</span>`
+            : `<a href="${mapsUrl}" target="_blank" class="qr-code" title="Abrir no Google Maps"><img src="${qrUrl}" alt="QR Code" loading="lazy"></a><span class="qr-label">📍 Ir ao Local</span>`
+          }
+            </div>
+          </div>
+        `;
+      } else {
+        nextContainerWrapper.style.display = 'none';
+        nextGameContainer.innerHTML = '';
+      }
+
+      // Rest of the games
+      games.forEach((game, index) => {
+        const month = game.date.split('/')[1];
+        const monthId = 'month-' + month;
+
+        if (month !== currentMonth) {
+          if (currentMonth !== '') {
+            html += `</div></div>`; // close previous month-content and month-group
+          }
+          currentMonth = month;
+          html += `
+            <div class="month-group">
+              <div class="month-header collapsed" id="header-${monthId}" onclick="toggleMonth('${monthId}')">
+                ${monthNames[month] || month}
+              </div>
+              <div class="month-content collapsed" style="grid-column: 1 / -1;" id="${monthId}">
+          `;
+        }
+
+        const typeClass = game.isHome ? 'home' : 'away';
+        const typeBadge = game.isHome ? 'Casa' : 'Fora';
+        const mapsUrl = game.isHome ? '' : getGoogleMapsUrl(game.mapsQuery);
+        const qrUrl = game.isHome ? '' : getQRCodeUrl(mapsUrl);
+
+        const homeTeamClass = game.home === 'METALÚRGICOS/JUNDIAÍ' ? 'highlight' : '';
+        const awayTeamClass = game.away === 'METALÚRGICOS/JUNDIAÍ' ? 'highlight' : '';
+
+        const result = loadResult(game.gameNum);
+        let resultClass = '';
+        let resultHtml = '';
+
+        if (result !== null) {
+          let goalsDisplay = '';
+          if (result.goals) {
+            try {
+              const parsed = JSON.parse(result.goals);
+              const goalsList = Object.entries(parsed)
+                .filter(([p, q]) => q > 0)
+                .map(([p, q]) => {
+                  const playerObj = PLAYERS.find(pl => pl.displayName === p);
+                  const photoUrl = playerObj ? playerObj.photo : PLAYER_ICON;
+                  return `
+                    <div style="display: flex; align-items: center; gap: 8px; background: #fff; padding: 5px 12px; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+                      <div style="width: 24px; height: 32px; border-radius: 4px; overflow: hidden; background: #eee; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.05);">
+                        <img src="${photoUrl}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                      </div>
+                      <span style="font-weight: 700; font-size: 13px; color: var(--accent-black);">${p}</span>
+                      <span style="background: var(--accent-red); color: white; font-weight: 900; font-size: 11px; padding: 2px 8px; border-radius: 6px; margin-left: 2px;">${q} ${q > 1 ? 'GOLS' : 'GOL'}</span>
+                    </div>
+                  `;
+                }).join('');
+              if (goalsList) {
+                goalsDisplay = `<div style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px;">${goalsList}</div>`;
+              }
+            } catch (e) {
+              goalsDisplay = `<div style="margin-top: 8px; font-size: 13px; color: var(--text-secondary);"><strong>⚽ Gols:</strong> ${result.goals}</div>`;
+            }
+          }
+
+          const outcome = calcOutcome(game, result.homeScore, result.awayScore);
+          resultClass = `has-result result-${outcome}`;
+          resultHtml = `
+            <div class="result-display">
+              <div class="result-scoreboard">
+                <span class="result-score-home">${result.homeScore}</span>
+                <span class="result-score-separator">×</span>
+                <span class="result-score-away">${result.awayScore}</span>
+              </div>
+              <span class="result-outcome-badge ${outcome}">${outcomeLabel(outcome)}</span>
+            </div>
+            ${goalsDisplay}
+          `;
+        } else {
+          resultHtml = `
+            <div class="result-display">
+              <span class="result-pending" onclick="openModal('${game.gameNum}')">
+                ⏳ Resultado pendente — clique para registrar
+              </span>
+            </div>
+          `;
+        }
+
+        const editBtn = `<button class="btn-edit-result" onclick="openModal('${game.gameNum}')">✏️ ${result !== null ? 'Editar resultado' : 'Registrar resultado'}</button>`;
+
+        html += `
+          <div class="game-card ${typeClass} ${resultClass}" id="card-${game.gameNum}">
+            <div class="game-info">
+              <div class="game-meta">
+                <span class="game-round">${game.round}</span>
+                <span class="game-number">Jogo nº${game.gameNum}</span>
+                <span class="game-type-badge ${typeClass}">${typeBadge}</span>
+              </div>
+              <div class="game-teams">
+                <span class="team-name ${homeTeamClass}">${game.home}</span>
+                <span class="vs-badge">VS</span>
+                <span class="team-name ${awayTeamClass}">${game.away}</span>
+              </div>
+              <div class="game-details">
+                <div class="detail-row">
+                  <span class="detail-icon">📅</span>
+                  <span>${game.date}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-icon">⏰</span>
+                  <span>${game.time}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-icon">📍</span>
+                  <span>${game.venue}</span>
+                </div>
+                ${game.address ? `
+                <div class="detail-row">
+                  <span class="detail-icon">🗺️</span>
+                  <span>${game.address}</span>
+                </div>
+                ` : ''}
+              </div>
+              ${resultHtml}
+              ${editBtn}
+            </div>
+            <div class="qr-section">
+              ${game.isHome
+            ? `<div class="home-badge-qr">🏠<br>Jogo em<br>Casa</div>
+                   <span class="home-label">Jundiaí</span>`
+            : `<a href="${mapsUrl}" target="_blank" class="qr-code" title="Abrir no Google Maps">
+                    <img src="${qrUrl}" alt="QR Code - ${game.venue}" loading="lazy">
+                  </a>
+                  <span class="qr-label">📍 Ir ao Local</span>`
+          }
+            </div>
+          </div>
+        `;
+      });
+
+      if (currentMonth !== '') {
+        html += `</div></div>`; // close last month-content and month-group
+      }
+
+      container.innerHTML = html;
+      updateSummary();
+    }
+
+    // =====================================================
+    // MODAL LOGIC
+    // =====================================================
+    let goalRowCount = 0;
+
+    function createGoalRow(player, goalsVal = 0) {
+      const rowId = `goal-row-${player.id}`;
+
+      let goalOptions = '<option value="0">0</option>';
+      for (let i = 1; i <= 15; i++) {
+        const selected = i === parseInt(goalsVal) ? 'selected' : '';
+        goalOptions += `<option value="${i}" ${selected}>${i}</option>`;
+      }
+
+      return `
+        <div id="${rowId}" style="display: flex; gap: 8px; align-items: stretch; min-width: 0; background: transparent;">
+          <!-- Player Zone (Left) -->
+          <div style="flex: 1; display: flex; gap: 12px; align-items: center; padding: 12px 16px; background: #ffffff; border: 1.5px solid var(--border-strong); border-radius: 14px; min-width: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+            <div class="player-photo" style="width: 36px; height: 36px; border-radius: 10px; background: #eee; border: 1px solid var(--border); overflow: hidden; flex-shrink: 0; box-shadow: inset 0 0 4px rgba(0,0,0,0.1);">
+               <img src="${player.photo}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+            </div>
+            <div style="flex: 1; font-weight: 800; font-size: 15px; color: var(--accent-black); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: 'Outfit', sans-serif;">
+              ${player.displayName}
+            </div>
+            <input type="hidden" class="goal-player-id" value="${player.displayName}">
+          </div>
+
+          <!-- Goal Zone (Right) -->
+          <div style="width: 80px; display: flex; align-items: center; justify-content: center; background: #ffffff; border: 1.5px solid var(--border-strong); border-radius: 14px; padding: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+            <div style="display: flex; align-items: center; gap: 8px; border: 1.5px solid var(--accent-black); border-radius: 10px; padding: 6px 10px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+              <span id="goal-display-${player.id}" style="min-width: 20px; text-align: center; font-size: 18px; font-weight: 900; color: var(--accent-red); font-family: 'Outfit', sans-serif;">${goalsVal}</span>
+              <input type="hidden" class="goal-count-input" id="goal-input-${player.id}" value="${goalsVal}">
+              <div style="display: flex; flex-direction: column; gap: 3px;">
+                <button onclick="incrementGoal('${player.id}')" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 12px; color: var(--accent-black); transition: transform 0.1s;" onmousedown="this.style.transform='scale(1.2)'" onmouseup="this.style.transform='scale(1)'">
+                  <svg width="12" height="8" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5L5 1L9 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button onclick="decrementGoal('${player.id}')" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 12px; color: var(--accent-black); transition: transform 0.1s;" onmousedown="this.style.transform='scale(0.8)'" onmouseup="this.style.transform='scale(1)'">
+                  <svg width="12" height="8" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function incrementGoal(playerId) {
+      const input = document.getElementById(`goal-input-${playerId}`);
+      const display = document.getElementById(`goal-display-${playerId}`);
+      let val = parseInt(input.value, 10);
+      if (val < 15) {
+        val++;
+        input.value = val;
+        display.textContent = val;
+      }
+    }
+
+    function decrementGoal(playerId) {
+      const input = document.getElementById(`goal-input-${playerId}`);
+      const display = document.getElementById(`goal-display-${playerId}`);
+      let val = parseInt(input.value, 10);
+      if (val > 0) {
+        val--;
+        input.value = val;
+        display.textContent = val;
+      }
+    }
+
+    function openModal(gameNum) {
+      currentGameNum = gameNum;
+      const game = games.find(g => g.gameNum === gameNum);
+      document.getElementById('modalTitle').textContent = `${game.round} — Jogo nº${game.gameNum}`;
+      document.getElementById('modalSubtitle').textContent = `${game.home} × ${game.away} · ${game.date}`;
+      document.getElementById('modalHomeLabel').textContent = game.home;
+      document.getElementById('modalAwayLabel').textContent = game.away;
+
+      const existing = loadResult(gameNum);
+      document.getElementById('inputScoreHome').value = existing ? existing.homeScore : '';
+      document.getElementById('inputScoreAway').value = existing ? existing.awayScore : '';
+
+      // Populate goals container WITH ALL PLAYERS
+      const goalsContainer = document.getElementById('goalsContainer');
+      let goalsHtml = '';
+      let parsedGoals = {};
+      if (existing && existing.goals) {
+        try {
+          parsedGoals = JSON.parse(existing.goals);
+        } catch { }
+      }
+
+      PLAYERS.forEach(player => {
+        const goalsForPlayer = parsedGoals[player.displayName] || 0;
+        goalsHtml += createGoalRow(player, goalsForPlayer);
+      });
+
+      goalsContainer.innerHTML = goalsHtml;
+
+      document.getElementById('inputPassword').value = '';
+      document.getElementById('modalError').style.display = 'none';
+
+      document.getElementById('modalOverlay').classList.add('open');
+      setTimeout(() => document.getElementById('inputPassword').focus(), 100);
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      currentGameNum = null;
+    }
+
+    function saveResult() {
+      const pwd = document.getElementById('inputPassword').value;
+      if (pwd !== RESULT_PASSWORD) {
+        document.getElementById('modalError').style.display = 'block';
+        document.getElementById('inputPassword').value = '';
+        document.getElementById('inputPassword').focus();
+        return;
+      }
+
+      const homeScore = parseInt(document.getElementById('inputScoreHome').value, 10);
+      const awayScore = parseInt(document.getElementById('inputScoreAway').value, 10);
+
+      const playerIds = document.querySelectorAll('.goal-player-id');
+      const goalInputs = document.querySelectorAll('.goal-count-input');
+      const goalsObj = {};
+
+      playerIds.forEach((hidden, index) => {
+        const playerDisplayName = hidden.value;
+        const count = parseInt(goalInputs[index].value, 10);
+        if (count > 0) {
+          goalsObj[playerDisplayName] = count;
+        }
+      });
+      const goalsStr = Object.keys(goalsObj).length > 0 ? JSON.stringify(goalsObj) : '';
+
+      if (isNaN(homeScore) || isNaN(awayScore) || homeScore < 0 || awayScore < 0) {
+        document.getElementById('modalError').textContent = 'Preencha os dois placares corretamente.';
+        document.getElementById('modalError').style.display = 'block';
+        return;
+      }
+
+      saveResultToStorage(currentGameNum, homeScore, awayScore, goalsStr);
+      closeModal();
+      renderGames();
+    }
+
+    function clearResult() {
+      const pwd = document.getElementById('inputPassword').value;
+      if (pwd !== RESULT_PASSWORD) {
+        document.getElementById('modalError').style.display = 'block';
+        document.getElementById('inputPassword').value = '';
+        document.getElementById('inputPassword').focus();
+        return;
+      }
+      clearResultFromStorage(currentGameNum);
+      closeModal();
+      renderGames();
+    }
+
+    // Close modal on overlay click
+    document.getElementById('modalOverlay').addEventListener('click', function (e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Enter key to save
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    function togglePasswordVisibility() {
+      const pwdInput = document.getElementById('inputPassword');
+      const toggleBtn = document.getElementById('togglePassword');
+      if (pwdInput.type === 'password') {
+        pwdInput.type = 'text';
+        toggleBtn.textContent = '👁️‍🗨️'; // Mudar ícone para ocultar
+      } else {
+        pwdInput.type = 'password';
+        toggleBtn.textContent = '👁️';
+      }
+    }
+
+    // =====================================================
+    // INIT
+    // =====================================================
+    renderGames();
+  </script>
+</body>
+
+</html>
