@@ -335,8 +335,6 @@
       flex-direction: row;
       gap: 12px;
       margin-bottom: 32px;
-      overflow-x: auto;
-      padding-bottom: 6px;
     }
 
     .last-game-pill {
@@ -489,13 +487,25 @@
       gap: 10px;
     }
 
-    .section-title::before {
-      content: '';
-      display: block;
-      width: 6px;
-      height: 24px;
-      background: var(--accent-red);
-      border-radius: 4px;
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .ver-mais {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-red);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+    }
+
+    .ver-mais:hover {
+      color: var(--accent-red-dark);
     }
 
     .game-card.highlighted-next {
@@ -1116,6 +1126,14 @@
       .scoreboard-summary {
         gap: 10px;
       }
+
+      .last-games-list {
+        flex-direction: column;
+      }
+
+      .last-game-pill {
+        min-width: 100%;
+      }
     }
 
     /* Print styles */
@@ -1221,7 +1239,10 @@
     </div>
 
     <!-- LAST 3 GAMES SUMMARY -->
-    <div class="section-title" style="margin-top: 20px;">🔙 Últimos Jogos</div>
+    <div class="section-header" style="margin-top: 20px;">
+      <div class="section-title" style="margin-bottom: 0;">Últimos Jogos</div>
+      <a href="#gamesList" class="ver-mais">Ver Mais →</a>
+    </div>
     <div class="last-games-list" id="lastGamesList"></div>
 
     <!-- NEXT GAME SECTION -->
@@ -1964,7 +1985,7 @@
               for (const [pName, pGoals] of Object.entries(goalsParsed)) {
                  if (pGoals > 0) {
                     const nameOnly = pName.split('-')[1]?.trim() || pName;
-                    scorers.push(`${nameOnly}` + (pGoals > 1 ? ` (${pGoals})` : ''));
+                    scorers.push(`⚽ ${nameOnly}` + (pGoals > 1 ? ` (${pGoals})` : ''));
                  }
               }
               scorersText = scorers.join(' - ');
