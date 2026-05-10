@@ -58,7 +58,234 @@
       padding: 24px 20px 60px;
     }
 
-    /* HEADER */
+    /* ==================== TABS ==================== */
+    .tabs-wrapper {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+      background: #ffffff;
+      border: 1.5px solid var(--border-strong);
+      border-radius: 14px;
+      padding: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      background: transparent;
+      border-radius: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tab-btn:hover {
+      background: rgba(200, 16, 46, 0.06);
+      color: var(--accent-red);
+    }
+
+    .tab-btn.active {
+      background: var(--accent-red);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(200, 16, 46, 0.35);
+    }
+
+    /* Sub Tabs */
+    .sub-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .sub-tab {
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: #f1f3f5;
+      color: #64748b;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid #e2e8f0;
+      transition: all 0.2s;
+    }
+    .sub-tab:hover {
+      background: #e2e8f0;
+    }
+    .sub-tab.active {
+      background: var(--accent-red);
+      color: white;
+      border-color: var(--accent-red);
+      box-shadow: 0 4px 12px rgba(200, 16, 46, 0.2);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==================== CLASSIFICATION ==================== */
+    .classif-section {
+      margin-bottom: 32px;
+    }
+
+    .classif-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .fed-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--accent-red);
+      color: white;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
+    }
+
+    .fed-link:hover {
+      background: var(--accent-red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(200, 16, 46, 0.4);
+    }
+
+    .classif-table-wrapper {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1.5px solid var(--border-strong);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      overflow-x: auto;
+    }
+
+    .classif-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 560px;
+    }
+
+    .classif-table thead tr {
+      background: linear-gradient(135deg, var(--accent-black) 0%, #333 50%, var(--accent-red) 100%);
+    }
+
+    .classif-table thead th {
+      padding: 12px 10px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-size: 11px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .classif-table thead th:nth-child(2) { text-align: left; }
+
+    .classif-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    .classif-table tbody tr:last-child { border-bottom: none; }
+
+    .classif-table tbody tr:hover {
+      background: rgba(200, 16, 46, 0.03);
+    }
+
+    .classif-table tbody tr.our-team {
+      background: linear-gradient(to right, rgba(200,16,46,0.08), rgba(200,16,46,0.03));
+      border-left: 4px solid var(--accent-red);
+    }
+
+    .classif-table tbody td {
+      padding: 11px 10px;
+      text-align: center;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .classif-table tbody td:nth-child(2) { text-align: left; }
+
+    .pos-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 13px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .pos-ouro   { background: linear-gradient(135deg, rgba(241,196,15,0.2), rgba(243,156,18,0.2)); color: #d35400; border: 1px solid #f39c12; }
+    .pos-prata  { background: linear-gradient(135deg, rgba(189,195,199,0.2), rgba(149,165,166,0.2)); color: #7f8c8d; border: 1px solid #bdc3c7; }
+    .pos-bronze { background: linear-gradient(135deg, rgba(205,127,50,0.2), rgba(160,82,45,0.2)); color: #a0522d; border: 1px solid #cd7f32; }
+    .pos-our    { background: var(--accent-red); color: white; box-shadow: 0 2px 8px rgba(200,16,46,0.4); border: none; }
+
+    .team-cell {
+      font-weight: 600;
+      color: var(--accent-black);
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .our-team .team-cell { font-weight: 800; color: var(--accent-red); }
+
+    .pts-cell {
+      font-weight: 900;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      color: var(--accent-black);
+    }
+
+    .our-team .pts-cell { color: var(--accent-red); }
+
+    /* UPDATE NOTE */
+    .update-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(243,156,18,0.08);
+      border: 1px solid rgba(243,156,18,0.25);
+      border-radius: 10px;
+      font-size: 12px;
+      color: var(--draw-color);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
     .header {
       text-align: center;
       margin-bottom: 36px;
@@ -1229,6 +1456,15 @@
       Aproveitamento: <span id="winPercentage">0%</span>
     </div>
 
+    <!-- TABS NAV -->
+    <div class="tabs-wrapper">
+      <button class="tab-btn active" id="tab-btn-calendar" onclick="switchTab('calendar')">📅 Calendário</button>
+      <button class="tab-btn" id="tab-btn-classif" onclick="switchTab('classif')">🏆 Classificação Sub 9</button>
+    </div>
+
+    <!-- ===== TAB: CALENDÁRIO ===== -->
+    <div class="tab-panel active" id="tab-calendar">
+
     <!-- LEGEND -->
     <div class="legend">
       <div class="legend-item">
@@ -1261,6 +1497,74 @@
     <!-- ARTILHARIA -->
     <div class="section-title" style="margin-top: 40px;">⚽ Artilharia</div>
     <div class="artilharia-list" id="artilhariaList"></div>
+
+    </div><!-- /tab-calendar -->
+
+    <!-- ===== TAB: CLASSIFICAÇÃO ===== -->
+    <div class="tab-panel" id="tab-classif">
+
+      <div class="update-note">
+        ⚠️ Dados da Federação atualizados em <strong>09/05/2026</strong> — após 8ª Rodada.
+        Para a classificação em tempo real, clique em "Ver na Federação".
+      </div>
+
+      <div class="sub-tabs">
+        <div class="sub-tab active" id="btn-sub9" onclick="switchSubTab('sub9')">🏆 Sub 9</div>
+        <div class="sub-tab" id="btn-ranking" onclick="switchSubTab('ranking')">🌟 Ranking Geral</div>
+      </div>
+
+      <!-- CLASSIFICAÇÃO GERAL -->
+      <div class="classif-section" id="section-sub9">
+        <div class="classif-header-row">
+          <div class="section-title" style="margin-bottom: 0;">Classificação — Sub 9</div>
+          <a href="https://eventos.admfutsal.com.br/evento/902" target="_blank" class="fed-link">
+            🔗 Ver na Federação
+          </a>
+        </div>
+        <div class="classif-table-wrapper">
+          <table class="classif-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Time</th>
+                <th>PJ</th>
+                <th>PTS</th>
+                <th>V</th>
+                <th>E</th>
+                <th>D</th>
+                <th>GP</th>
+                <th>GC</th>
+                <th>SG</th>
+              </tr>
+            </thead>
+            <tbody id="classifTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- RANKING GERAL (SOMA) -->
+      <div class="classif-section" id="section-ranking" style="display: none;">
+        <div class="classif-header-row">
+          <div class="section-title" style="margin-bottom: 0;">Ranking Geral — Soma dos Subs (7, 8, 9, 10)</div>
+          <a href="https://eventos.admfutsal.com.br/ranking?grupo-cat=1&divisao=4" target="_blank" class="fed-link">
+            🔗 Ver Ranking Completo
+          </a>
+        </div>
+        <div class="classif-table-wrapper">
+          <table class="classif-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Time</th>
+                <th style="text-align: center;">PTS Totais</th>
+              </tr>
+            </thead>
+            <tbody id="rankingGeralTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /tab-classif -->
 
     <!-- FOOTER -->
     <div class="footer">
@@ -1465,7 +1769,10 @@
         venue: HOME_VENUE,
         address: HOME_ADDRESS,
         isHome: true,
-        mapsQuery: ""
+        mapsQuery: "",
+        finalScoreHome: 7,
+        finalScoreAway: 2,
+        finalGoals: '{"12 - Pedro":3, "17 - Otto Pitombeira":1, "7 - Gabriel":1, "9 - Davi lucca":1, "5 - Rafa lucca":1}'
       },
       {
         round: "9ª Rodada",
@@ -2257,9 +2564,154 @@
     }
 
     // =====================================================
+    // TAB SWITCHING
+    // =====================================================
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+      document.getElementById('tab-btn-' + tab).classList.add('active');
+    }
+
+    function switchSubTab(tabName) {
+      document.getElementById('btn-sub9').classList.remove('active');
+      document.getElementById('btn-ranking').classList.remove('active');
+      
+      document.getElementById('section-sub9').style.display = 'none';
+      document.getElementById('section-ranking').style.display = 'none';
+
+      if (tabName === 'sub9') {
+        document.getElementById('btn-sub9').classList.add('active');
+        document.getElementById('section-sub9').style.display = 'block';
+      } else {
+        document.getElementById('btn-ranking').classList.add('active');
+        document.getElementById('section-ranking').style.display = 'block';
+      }
+    }
+
+    // =====================================================
+    // CLASSIFICAÇÃO — dados do site oficial da Federação
+    // https://eventos.admfutsal.com.br/evento/902
+    // Paulista Iniciação A2 2026 — SUB 9
+    // Atualizado após 8ª Rodada (09/05/2026)
+    // METALÚRGICOS/JUNDIAÍ: 8ª posição — 14 pontos
+    // =====================================================
+    const CLASSIF_DATA = [
+      { pos:  1, team: 'ADEF/COTIA', pj: 8, v: 7, e: 0, d: 1, gp: 31, gc: 14, pts: 21 },
+      { pos:  2, team: 'CLUBE BATALHA', pj: 8, v: 6, e: 1, d: 1, gp: 26, gc: 9, pts: 19 },
+      { pos:  3, team: 'G.D.R. 7 DE SETEMBRO', pj: 8, v: 6, e: 1, d: 1, gp: 34, gc: 21, pts: 19 },
+      { pos:  4, team: 'ASSOCIAÇÃO DESPORTIVA NANDO GRANA', pj: 8, v: 5, e: 1, d: 2, gp: 25, gc: 15, pts: 16 },
+      { pos:  5, team: 'ASSOCIAÇÃO ESPORTIVA RIVER DO BELÉM', pj: 7, v: 5, e: 1, d: 1, gp: 24, gc: 14, pts: 16 },
+      { pos:  6, team: 'A. UNIÃO MAUÁ', pj: 7, v: 5, e: 1, d: 1, gp: 18, gc: 10, pts: 16 },
+      { pos:  7, team: 'ADC MARVEL', pj: 8, v: 5, e: 1, d: 2, gp: 16, gc: 11, pts: 16 },
+      { pos:  8, team: 'METALÚRGICOS/JUNDIAÍ', pj: 8, v: 4, e: 2, d: 2, gp: 26, gc: 17, pts: 14 },
+      { pos:  9, team: 'ASSOCIAÇÃO PAULISTA FUTEBOL CLUBE MOOCA', pj: 8, v: 4, e: 2, d: 2, gp: 22, gc: 16, pts: 14 },
+      { pos: 10, team: 'SANTO ANDRÉ FUTSAL', pj: 6, v: 4, e: 1, d: 1, gp: 18, gc: 7, pts: 13 },
+      { pos: 11, team: 'ADC MERCEDES BENZ', pj: 8, v: 4, e: 1, d: 3, gp: 15, gc: 9, pts: 13 },
+      { pos: 12, team: 'SPORT BENFICA DE MOGI DAS CRUZES', pj: 8, v: 4, e: 1, d: 3, gp: 22, gc: 22, pts: 13 },
+      { pos: 13, team: 'S.E.R. CAIEIRAS', pj: 8, v: 3, e: 1, d: 4, gp: 14, gc: 14, pts: 10 },
+      { pos: 14, team: 'MX7 DIADEMA', pj: 8, v: 2, e: 2, d: 4, gp: 18, gc: 20, pts: 8 },
+      { pos: 15, team: 'A.D. SUZANO', pj: 7, v: 2, e: 2, d: 3, gp: 12, gc: 14, pts: 8 },
+      { pos: 16, team: 'OCIAN PRAIA CLUBE', pj: 8, v: 2, e: 2, d: 4, gp: 8, gc: 12, pts: 8 },
+      { pos: 17, team: 'INST. BONS DE BOLA', pj: 8, v: 2, e: 2, d: 4, gp: 14, gc: 24, pts: 8 },
+      { pos: 18, team: 'ASSOCIAÇÃO DESPORTIVA SANTO ANDRE FUTSAL', pj: 7, v: 2, e: 1, d: 4, gp: 16, gc: 21, pts: 7 },
+      { pos: 19, team: 'AE FRIBURGO', pj: 7, v: 2, e: 1, d: 4, gp: 13, gc: 21, pts: 7 },
+      { pos: 20, team: 'CTC VILA EMA', pj: 8, v: 2, e: 0, d: 6, gp: 15, gc: 22, pts: 6 },
+      { pos: 21, team: 'CHUTE FUTSAL', pj: 7, v: 2, e: 0, d: 5, gp: 13, gc: 24, pts: 6 },
+      { pos: 22, team: 'GR GREMETAL', pj: 8, v: 1, e: 0, d: 7, gp: 18, gc: 31, pts: 3 },
+      { pos: 23, team: 'ASSOCIAÇÃO ESPORTIVA FUTMAX', pj: 8, v: 1, e: 0, d: 7, gp: 11, gc: 31, pts: 3 },
+      { pos: 24, team: 'AA WIMPRO GUARULHOS', pj: 8, v: 0, e: 0, d: 8, gp: 10, gc: 40, pts: 0 }
+    ];
+
+    function renderClassification() {
+      const tbody = document.getElementById('classifTableBody');
+      if (!tbody) return;
+
+      tbody.innerHTML = CLASSIF_DATA.map(row => {
+        const isOurs = row.team === 'METALÚRGICOS/JUNDIAÍ';
+        const sg = row.gp - row.gc;
+        const sgStr = sg > 0 ? `+${sg}` : `${sg}`;
+        const sgColor = sg >= 0 ? '#27ae60' : '#c8102e';
+
+        let posClass = 'pos-ouro';
+        if (row.pos >= 9 && row.pos <= 16) posClass = 'pos-prata';
+        else if (row.pos >= 17) posClass = 'pos-bronze';
+        if (isOurs) posClass = 'pos-our';
+
+        return `
+          <tr class="${isOurs ? 'our-team' : ''}">
+            <td><span class="pos-badge ${posClass}">${row.pos}</span></td>
+            <td class="team-cell">${row.team}</td>
+            <td>${row.pj}</td>
+            <td class="pts-cell">${row.pts}</td>
+            <td>${row.v}</td>
+            <td>${row.e}</td>
+            <td>${row.d}</td>
+            <td>${row.gp}</td>
+            <td>${row.gc}</td>
+            <td style="font-weight:700; color:${sgColor}">${sgStr}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // =====================================================
+    // RANKING GERAL — Soma de todas as categorias
+    // =====================================================
+    const RANKING_GERAL_DATA = [
+      { pos: 1, team: "SINDICATO DOS METALURGICOS DE JUNDIAÍ", pts: 64 },
+      { pos: 2, team: "CLUBE BATALHA E SERVICOS ADMINISTRATIVOS E TELE-ATENDIMENTO LTDA | BATALHA", pts: 64 },
+      { pos: 3, team: "ASSOCIAÇÃO ESPORTIVA RIVER DO BELÉM | RIVER DO BELÉM", pts: 56 },
+      { pos: 4, team: "ASSOCIAÇÃO UNIÃO MAUÁ | A. UNIÃO MAUÁ", pts: 55 },
+      { pos: 5, team: "SANTO ANDRE FUTEBOL CLUBE | SANTO ANDRÉ FUTSAL", pts: 46 },
+      { pos: 6, team: "SPORT BENFICA DE MOGI DAS CRUZES", pts: 61 },
+      { pos: 7, team: "ASSOCIAÇÃO DESPORTIVA CLASSISTA MERCEDES BENZ | ADC MERCEDES BENZ", pts: 49 },
+      { pos: 8, team: "A.D.E.F. ASSOCIAÇÃO DESPORTIVA EDUKA FUT | ADEF/COTIA", pts: 51 },
+      { pos: 9, team: "CÍRCULO DE TRABALHADORES CRISTÃOS DE VILA EMA - CTC VILA EMA", pts: 50 },
+      { pos: 10, team: "ASSOCIAçãO DESPORTIVA CULTURAL MARVEL", pts: 49 },
+      { pos: 11, team: "INSTITUTO FORMANDO ATLETAS BONS DE BOLA | INST. BONS DE BOLA", pts: 47 },
+      { pos: 12, team: "GRÊMIO RECR. ESPORTIVO DOS METALÚRGICOS DE SANTOS - GREMETAL", pts: 45 },
+      { pos: 13, team: "ASSOCIACAO DESPORTIVA S.F. | A.D. SUZANO", pts: 40 },
+      { pos: 14, team: "ASSOCIAÇÃO DESPORTIVA SANTO ANDRE FUTSAL - AD SANTO ANDRÉ FUTSAL", pts: 37 },
+      { pos: 15, team: "ASSOCIAÇÃO DESPORTIVA NANDO GRANA", pts: 42 },
+      { pos: 16, team: "GRÊMIO DESPORTIVO RECREATIVO 7 DE SETEMBRO", pts: 40 },
+      { pos: 17, team: "ASSOCIAÇÃO ESPORTIVA CHUTE FUTSAL PARADA INGLESA - CHUTE FUTSAL", pts: 36 },
+      { pos: 18, team: "OCIAN PRAIA CLUBE (A.A. PRAIA GRANDE) - MASCULINO - OCIAN PRAIA CLUBE", pts: 41 },
+      { pos: 19, team: "ASSOCIAÇÃO ESPORTIVA FRIBURGO | AE FRIBURGO", pts: 34 },
+      { pos: 20, team: "ASSOCIAÇÃO PAULISTA FUTEBOL CLUBE MOOCA - | ATIVO", pts: 37 },
+      { pos: 21, team: "LIFESPORTS GESTAO ESPORTIVA LTDA | MX7 DIADEMA", pts: 35 },
+      { pos: 22, team: "SOCIEDADE ESPORTIVA E RECREATIVA DE CAIEIRAS | S.E.R. CAIEIRAS", pts: 30 },
+      { pos: 23, team: "ASSOCIAçãO ESPORTIVA FUTMAX", pts: 17 },
+      { pos: 24, team: "ASSOCIAÇÃO ATLÉTICA WIMPRO MENORES GUARULHOS - AA WIMPRO GUARULHOS", pts: 10 }
+    ];
+
+    function renderRankingGeral() {
+      const tbody = document.getElementById('rankingGeralTableBody');
+      if (!tbody) return;
+
+      tbody.innerHTML = RANKING_GERAL_DATA.map(row => {
+        const isOurs = row.team.includes('METALURGICOS DE JUNDIAÍ');
+        let posClass = 'pos-ouro';
+        if (row.pos >= 9 && row.pos <= 16) posClass = 'pos-prata';
+        else if (row.pos >= 17) posClass = 'pos-bronze';
+        if (isOurs) posClass = 'pos-our';
+
+        return `
+          <tr class="${isOurs ? 'our-team' : ''}">
+            <td><span class="pos-badge ${posClass}">${row.pos}</span></td>
+            <td class="team-cell">${row.team}</td>
+            <td class="pts-cell" style="text-align: center;">${row.pts}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // =====================================================
     // INIT
     // =====================================================
     renderGames();
+    renderClassification();
+    renderRankingGeral();
   </script>
 </body>
 
