@@ -1800,7 +1800,10 @@
         venue: HOME_VENUE,
         address: HOME_ADDRESS,
         isHome: true,
-        mapsQuery: ""
+        mapsQuery: "",
+        finalScoreHome: 3,
+        finalScoreAway: 2,
+        finalGoals: '{"7 - Gabriel":1, "14 - Bernardo Marques":1, "17 - Otto Pitombeira":1}'
       },
       {
         round: "11ª Rodada",
@@ -2601,271 +2604,31 @@
     // METALÚRGICOS/JUNDIAÍ: 8ª posição — 17 pontos
     // =====================================================
     const CLASSIF_DATA = [
-      {
-        "pos": 1,
-        "team": "CLUBE BATALHA",
-        "pts": 22,
-        "pj": 9,
-        "v": 7,
-        "e": 1,
-        "d": 1,
-        "gp": 30,
-        "gc": 11
-      },
-      {
-        "pos": 2,
-        "team": "ADEF/COTIA",
-        "pts": 22,
-        "pj": 9,
-        "v": 7,
-        "e": 1,
-        "d": 1,
-        "gp": 32,
-        "gc": 15
-      },
-      {
-        "pos": 3,
-        "team": "SANTO ANDRÉ FUTSAL",
-        "pts": 19,
-        "pj": 8,
-        "v": 6,
-        "e": 1,
-        "d": 1,
-        "gp": 30,
-        "gc": 10
-      },
-      {
-        "pos": 4,
-        "team": "ASSOCIAÇÃO DESPORTIVA NANDO GRANA",
-        "pts": 19,
-        "pj": 9,
-        "v": 6,
-        "e": 1,
-        "d": 2,
-        "gp": 30,
-        "gc": 18
-      },
-      {
-        "pos": 5,
-        "team": "G.D.R. 7 DE SETEMBRO",
-        "pts": 19,
-        "pj": 9,
-        "v": 6,
-        "e": 1,
-        "d": 2,
-        "gp": 35,
-        "gc": 25
-      },
-      {
-        "pos": 6,
-        "team": "A. UNIÃO MAUÁ",
-        "pts": 19,
-        "pj": 8,
-        "v": 6,
-        "e": 1,
-        "d": 1,
-        "gp": 20,
-        "gc": 11
-      },
-      {
-        "pos": 7,
-        "team": "METALÚRGICOS DE JUNDIAÍ",
-        "pts": 17,
-        "pj": 9,
-        "v": 5,
-        "e": 2,
-        "d": 2,
-        "gp": 30,
-        "gc": 18
-      },
-      {
-        "pos": 8,
-        "team": "ASSOCIAÇÃO ESPORTIVA RIVER DO BELÉM",
-        "pts": 16,
-        "pj": 8,
-        "v": 5,
-        "e": 1,
-        "d": 2,
-        "gp": 25,
-        "gc": 16
-      },
-      {
-        "pos": 9,
-        "team": "ADC MARVEL",
-        "pts": 16,
-        "pj": 9,
-        "v": 5,
-        "e": 1,
-        "d": 3,
-        "gp": 16,
-        "gc": 14
-      },
-      {
-        "pos": 10,
-        "team": "ADC MERCEDES BENZ",
-        "pts": 14,
-        "pj": 9,
-        "v": 4,
-        "e": 2,
-        "d": 3,
-        "gp": 17,
-        "gc": 11
-      },
-      {
-        "pos": 11,
-        "team": "ASSOCIAÇÃO PAULISTA FUTEBOL CLUBE MOOCA",
-        "pts": 14,
-        "pj": 9,
-        "v": 4,
-        "e": 2,
-        "d": 3,
-        "gp": 24,
-        "gc": 20
-      },
-      {
-        "pos": 12,
-        "team": "SPORT BENFICA DE MOGI DAS CRUZES",
-        "pts": 13,
-        "pj": 9,
-        "v": 4,
-        "e": 1,
-        "d": 4,
-        "gp": 24,
-        "gc": 25
-      },
-      {
-        "pos": 13,
-        "team": "A.D. SUZANO",
-        "pts": 12,
-        "pj": 9,
-        "v": 3,
-        "e": 3,
-        "d": 3,
-        "gp": 18,
-        "gc": 18
-      },
-      {
-        "pos": 14,
-        "team": "S.E.R. CAIEIRAS",
-        "pts": 11,
-        "pj": 9,
-        "v": 3,
-        "e": 2,
-        "d": 4,
-        "gp": 16,
-        "gc": 16
-      },
-      {
-        "pos": 15,
-        "team": "MX7 DIADEMA",
-        "pts": 11,
-        "pj": 9,
-        "v": 3,
-        "e": 2,
-        "d": 4,
-        "gp": 21,
-        "gc": 22
-      },
-      {
-        "pos": 16,
-        "team": "ASSOCIAÇÃO DESPORTIVA SANTO ANDRE FUTSAL",
-        "pts": 11,
-        "pj": 9,
-        "v": 3,
-        "e": 2,
-        "d": 4,
-        "gp": 23,
-        "gc": 26
-      },
-      {
-        "pos": 17,
-        "team": "OCIAN PRAIA CLUBE",
-        "pts": 8,
-        "pj": 9,
-        "v": 2,
-        "e": 2,
-        "d": 5,
-        "gp": 9,
-        "gc": 15
-      },
-      {
-        "pos": 18,
-        "team": "AE FRIBURGO",
-        "pts": 8,
-        "pj": 8,
-        "v": 2,
-        "e": 2,
-        "d": 4,
-        "gp": 14,
-        "gc": 22
-      },
-      {
-        "pos": 19,
-        "team": "INST. BONS DE BOLA",
-        "pts": 8,
-        "pj": 9,
-        "v": 2,
-        "e": 2,
-        "d": 5,
-        "gp": 16,
-        "gc": 28
-      },
-      {
-        "pos": 20,
-        "team": "CHUTE FUTSAL",
-        "pts": 7,
-        "pj": 9,
-        "v": 2,
-        "e": 1,
-        "d": 6,
-        "gp": 18,
-        "gc": 35
-      },
-      {
-        "pos": 21,
-        "team": "CTC VILA EMA",
-        "pts": 6,
-        "pj": 9,
-        "v": 2,
-        "e": 0,
-        "d": 7,
-        "gp": 18,
-        "gc": 27
-      },
-      {
-        "pos": 22,
-        "team": "ASSOCIAÇÃO ESPORTIVA FUTMAX",
-        "pts": 6,
-        "pj": 9,
-        "v": 2,
-        "e": 0,
-        "d": 7,
-        "gp": 12,
-        "gc": 31
-      },
-      {
-        "pos": 23,
-        "team": "GR GREMETAL",
-        "pts": 4,
-        "pj": 9,
-        "v": 1,
-        "e": 1,
-        "d": 7,
-        "gp": 20,
-        "gc": 33
-      },
-      {
-        "pos": 24,
-        "team": "AA WIMPRO GUARULHOS",
-        "pts": 0,
-        "pj": 9,
-        "v": 0,
-        "e": 0,
-        "d": 9,
-        "gp": 10,
-        "gc": 41
-      }
-    ];
+  { pos: '1º', team: 'SANTO ANDRÉ FUTSAL', pts: 22, j: 9, v: 7, e: 1, d: 1, gp: 32, gc: 10, sg: 22 },
+  { pos: '2º', team: 'ADEF/COTIA', pts: 22, j: 10, v: 7, e: 1, d: 2, gp: 33, gc: 17, sg: 16 },
+  { pos: '3º', team: 'CLUBE BATALHA', pts: 22, j: 10, v: 7, e: 1, d: 2, gp: 30, gc: 14, sg: 16 },
+  { pos: '4º', team: 'G.D.R. 7 DE SETEMBRO', pts: 22, j: 10, v: 7, e: 1, d: 2, gp: 38, gc: 26, sg: 12 },
+  { pos: '5º', team: 'A. UNIÃO MAUÁ', pts: 22, j: 9, v: 7, e: 1, d: 1, gp: 22, gc: 12, sg: 10 },
+  { pos: '6º', team: 'METALÚRGICOS DE JUNDIAÍ', pts: 20, j: 10, v: 6, e: 2, d: 2, gp: 33, gc: 20, sg: 13 },
+  { pos: '7º', team: 'ASSOCIAÇÃO DESPORTIVA NANDO GRANA', pts: 19, j: 10, v: 6, e: 1, d: 3, gp: 34, gc: 23, sg: 11 },
+  { pos: '8º', team: 'ASSOCIAÇÃO ESPORTIVA RIVER DO BELÉM | RIVER DO BELÉM', pts: 19, j: 9, v: 6, e: 1, d: 2, gp: 27, gc: 17, sg: 10 },
+  { pos: '9º', team: 'ADC MARVEL', pts: 19, j: 10, v: 6, e: 1, d: 3, gp: 17, gc: 14, sg: 3 },
+  { pos: '10º', team: 'SPORT BENFICA DE MOGI DAS CRUZES', pts: 16, j: 10, v: 5, e: 1, d: 4, gp: 31, gc: 27, sg: 4 },
+  { pos: '11º', team: 'ASSOCIAÇÃO PAULISTA FUTEBOL CLUBE MOOCA', pts: 14, j: 10, v: 4, e: 2, d: 4, gp: 24, gc: 22, sg: 2 },
+  { pos: '12º', team: 'ADC MERCEDES BENZ', pts: 14, j: 10, v: 4, e: 2, d: 4, gp: 19, gc: 18, sg: 1 },
+  { pos: '13º', team: 'A.D. SUZANO', pts: 12, j: 10, v: 3, e: 3, d: 4, gp: 19, gc: 21, sg: -2 },
+  { pos: '14º', team: 'S.E.R. CAIEIRAS', pts: 11, j: 10, v: 3, e: 2, d: 5, gp: 16, gc: 17, sg: -1 },
+  { pos: '15º', team: 'MX7 DIADEMA', pts: 11, j: 10, v: 3, e: 2, d: 5, gp: 23, gc: 25, sg: -2 },
+  { pos: '16º', team: 'ASSOCIAÇÃO DESPORTIVA SANTO ANDRE FUTSAL', pts: 11, j: 10, v: 3, e: 2, d: 5, gp: 24, gc: 28, sg: -4 },
+  { pos: '17º', team: 'INST. BONS DE BOLA', pts: 11, j: 10, v: 3, e: 2, d: 5, gp: 20, gc: 30, sg: -10 },
+  { pos: '18º', team: 'CHUTE FUTSAL', pts: 10, j: 10, v: 3, e: 1, d: 6, gp: 21, gc: 36, sg: -15 },
+  { pos: '19º', team: 'CTC VILA EMA', pts: 9, j: 10, v: 3, e: 0, d: 7, gp: 21, gc: 27, sg: -6 },
+  { pos: '20º', team: 'AE FRIBURGO', pts: 9, j: 9, v: 2, e: 3, d: 4, gp: 16, gc: 24, sg: -8 },
+  { pos: '21º', team: 'OCIAN PRAIA CLUBE', pts: 8, j: 10, v: 2, e: 2, d: 6, gp: 11, gc: 19, sg: -8 },
+  { pos: '22º', team: 'GR GREMETAL', pts: 7, j: 10, v: 2, e: 1, d: 7, gp: 25, gc: 37, sg: -12 },
+  { pos: '23º', team: 'ASSOCIAçãO ESPORTIVA FUTMAX', pts: 6, j: 10, v: 2, e: 0, d: 8, gp: 13, gc: 34, sg: -21 },
+  { pos: '24º', team: 'AA WIMPRO GUARULHOS', pts: 1, j: 10, v: 0, e: 1, d: 9, gp: 12, gc: 43, sg: -31 }
+];
 
     function renderClassification() {
       const tbody = document.getElementById('classifTableBody');
@@ -2903,127 +2666,31 @@
     // RANKING GERAL — Soma de todas as categorias
     // =====================================================
     const RANKING_GERAL_DATA = [
-      {
-        "pos": 1,
-        "team": "CLUBE BATALHA E SERVICOS ADMINISTRATIVOS E TELE-ATENDIMENTO LTDA | BATALHA",
-        "pts": 76
-      },
-      {
-        "pos": 2,
-        "team": "SINDICATO DOS METALURGICOS DE JUNDIAÍ",
-        "pts": 71
-      },
-      {
-        "pos": 3,
-        "team": "SANTO ANDRE FUTEBOL CLUBE | SANTO ANDRÉ FUTSAL",
-        "pts": 65
-      },
-      {
-        "pos": 4,
-        "team": "SPORT BENFICA DE MOGI DAS CRUZES",
-        "pts": 70
-      },
-      {
-        "pos": 5,
-        "team": "ASSOCIAÇÃO UNIÃO MAUÁ | A. UNIÃO MAUÁ",
-        "pts": 61
-      },
-      {
-        "pos": 6,
-        "team": "ASSOCIAÇÃO ESPORTIVA RIVER DO BELÉM | RIVER DO BELÉM",
-        "pts": 62
-      },
-      {
-        "pos": 7,
-        "team": "ASSOCIACAO DESPORTIVA S.F. | A.D. SUZANO",
-        "pts": 57
-      },
-      {
-        "pos": 8,
-        "team": "ASSOCIAÇÃO DESPORTIVA CLASSISTA MERCEDES BENZ | ADC MERCEDES BENZ",
-        "pts": 53
-      },
-      {
-        "pos": 9,
-        "team": "INSTITUTO FORMANDO ATLETAS BONS DE BOLA | INST. BONS DE BOLA",
-        "pts": 56
-      },
-      {
-        "pos": 10,
-        "team": "A.D.E.F. ASSOCIAÇÃO DESPORTIVA EDUKA FUT | ADEF/COTIA",
-        "pts": 56
-      },
-      {
-        "pos": 11,
-        "team": "CÍRCULO DE TRABALHADORES CRISTÃOS DE VILA EMA - CTC VILA EMA",
-        "pts": 56
-      },
-      {
-        "pos": 12,
-        "team": "GRÊMIO RECR. ESPORTIVO DOS METALÚRGICOS DE SANTOS - GREMETAL",
-        "pts": 52
-      },
-      {
-        "pos": 13,
-        "team": "ASSOCIAçãO DESPORTIVA CULTURAL MARVEL",
-        "pts": 50
-      },
-      {
-        "pos": 14,
-        "team": "ASSOCIAÇÃO DESPORTIVA NANDO GRANA",
-        "pts": 48
-      },
-      {
-        "pos": 15,
-        "team": "ASSOCIAÇÃO ESPORTIVA FRIBURGO | AE FRIBURGO",
-        "pts": 42
-      },
-      {
-        "pos": 16,
-        "team": "GRÊMIO DESPORTIVO RECREATIVO 7 DE SETEMBRO",
-        "pts": 44
-      },
-      {
-        "pos": 17,
-        "team": "ASSOCIAÇÃO DESPORTIVA SANTO ANDRE FUTSAL - AD SANTO ANDRÉ FUTSAL",
-        "pts": 44
-      },
-      {
-        "pos": 18,
-        "team": "ASSOCIAÇÃO ESPORTIVA CHUTE FUTSAL PARADA INGLESA - CHUTE FUTSAL",
-        "pts": 44
-      },
-      {
-        "pos": 19,
-        "team": "OCIAN PRAIA CLUBE (A.A. PRAIA GRANDE) - MASCULINO - OCIAN PRAIA CLUBE",
-        "pts": 42
-      },
-      {
-        "pos": 20,
-        "team": "LIFESPORTS GESTAO ESPORTIVA LTDA | MX7 DIADEMA",
-        "pts": 38
-      },
-      {
-        "pos": 21,
-        "team": "ASSOCIAÇÃO PAULISTA FUTEBOL CLUBE MOOCA - | ATIVO",
-        "pts": 37
-      },
-      {
-        "pos": 22,
-        "team": "SOCIEDADE ESPORTIVA E RECREATIVA DE CAIEIRAS | S.E.R. CAIEIRAS",
-        "pts": 35
-      },
-      {
-        "pos": 23,
-        "team": "ASSOCIAçãO ESPORTIVA FUTMAX",
-        "pts": 26
-      },
-      {
-        "pos": 24,
-        "team": "ASSOCIAÇÃO ATLÉTICA WIMPRO MENORES GUARULHOS - AA WIMPRO GUARULHOS",
-        "pts": 13
-      }
-    ];
+  { pos: 1, team: 'METALÚRGICOS DE JUNDIAÍ', pts: 83 },
+  { pos: 2, team: 'SPORT BENFICA DE MOGI DAS CRUZES', pts: 77 },
+  { pos: 3, team: 'SANTO ANDRÉ FUTSAL', pts: 77 },
+  { pos: 4, team: 'CLUBE BATALHA', pts: 76 },
+  { pos: 5, team: 'A. UNIÃO MAUÁ', pts: 70 },
+  { pos: 6, team: 'ASSOCIAÇÃO ESPORTIVA RIVER DO BELÉM | RIVER DO BELÉM', pts: 69 },
+  { pos: 7, team: 'CTC VILA EMA', pts: 68 },
+  { pos: 8, team: 'INST. BONS DE BOLA', pts: 65 },
+  { pos: 9, team: 'A.D. SUZANO', pts: 64 },
+  { pos: 10, team: 'GR GREMETAL', pts: 61 },
+  { pos: 11, team: 'ADEF/COTIA', pts: 59 },
+  { pos: 12, team: 'ADC MARVEL', pts: 59 },
+  { pos: 13, team: 'ADC MERCEDES BENZ', pts: 57 },
+  { pos: 14, team: 'G.D.R. 7 DE SETEMBRO', pts: 51 },
+  { pos: 15, team: 'ASSOCIAÇÃO DESPORTIVA NANDO GRANA', pts: 51 },
+  { pos: 16, team: 'AE FRIBURGO', pts: 49 },
+  { pos: 17, team: 'ASSOCIAÇÃO DESPORTIVA SANTO ANDRE FUTSAL', pts: 48 },
+  { pos: 18, team: 'CHUTE FUTSAL', pts: 48 },
+  { pos: 19, team: 'OCIAN PRAIA CLUBE', pts: 45 },
+  { pos: 20, team: 'MX7 DIADEMA', pts: 38 },
+  { pos: 21, team: 'S.E.R. CAIEIRAS', pts: 38 },
+  { pos: 22, team: 'ASSOCIAÇÃO PAULISTA FUTEBOL CLUBE MOOCA', pts: 37 },
+  { pos: 23, team: 'ASSOCIAÇÃO ESPORTIVA FUTMAX', pts: 30 },
+  { pos: 24, team: 'AA WIMPRO GUARULHOS', pts: 17 }
+];
 
     function renderRankingGeral() {
       const tbody = document.getElementById('rankingGeralTableBody');
