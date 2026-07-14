@@ -1917,7 +1917,10 @@
         venue: "Ginásio do Ocian Praia Clube",
         address: "R. Com. Otto Carlos Golanda, 80, Ocian, Praia Grande, SP",
         isHome: false,
-        mapsQuery: "Ocian Praia Clube Rua Comendador Otto Carlos Golanda 80 Praia Grande SP"
+        mapsQuery: "Ocian Praia Clube Rua Comendador Otto Carlos Golanda 80 Praia Grande SP",
+        finalScoreHome: 0,
+        finalScoreAway: 2,
+        finalGoals: '{"12 - Pedro":1, "9 - Davi lucca":1}'
       },
       {
         round: "19ª Rodada",
@@ -2623,30 +2626,30 @@
     // METALÚRGICOS/JUNDIAÍ: 8ª posição — 17 pontos
     // =====================================================
     const CLASSIF_DATA = [
-  { "pos": "1º", "team": "ADEF/COTIA", "pts": 38, "j": 17, "v": 12, "e": 2, "d": 3, "gp": 55, "gc": 25, "sg": 30 },
-  { "pos": "2º", "team": "METALÚRGICOS DE JUNDIAÍ ", "pts": 38, "j": 17, "v": 12, "e": 2, "d": 3, "gp": 57, "gc": 30, "sg": 27 },
-  { "pos": "3º", "team": "A. UNIÃO MAUÁ", "pts": 38, "j": 16, "v": 12, "e": 2, "d": 2, "gp": 46, "gc": 20, "sg": 26 },
-  { "pos": "4º", "team": "SANTO ANDRÉ FUTSAL", "pts": 37, "j": 16, "v": 12, "e": 1, "d": 3, "gp": 63, "gc": 29, "sg": 34 },
-  { "pos": "5º", "team": "CLUBE BATALHA", "pts": 37, "j": 17, "v": 12, "e": 1, "d": 4, "gp": 46, "gc": 22, "sg": 24 },
-  { "pos": "6º", "team": "ASSOCIAÇÃO ESPORTIVA RIVER DO BELÉM | RIVER DO BELÉM", "pts": 36, "j": 17, "v": 11, "e": 3, "d": 3, "gp": 56, "gc": 32, "sg": 24 },
-  { "pos": "7º", "team": "G.D.R. 7 DE SETEMBRO", "pts": 35, "j": 17, "v": 11, "e": 2, "d": 4, "gp": 62, "gc": 38, "sg": 24 },
-  { "pos": "8º", "team": "SPORT BENFICA DE MOGI DAS CRUZES ", "pts": 34, "j": 17, "v": 11, "e": 1, "d": 5, "gp": 65, "gc": 33, "sg": 32 },
-  { "pos": "9º", "team": "ASSOCIAÇÃO DESPORTIVA NANDO GRANA", "pts": 31, "j": 17, "v": 10, "e": 1, "d": 6, "gp": 55, "gc": 47, "sg": 8 },
-  { "pos": "10º", "team": "MX7 DIADEMA", "pts": 30, "j": 17, "v": 9, "e": 3, "d": 5, "gp": 49, "gc": 38, "sg": 11 },
-  { "pos": "11º", "team": "ADC MARVEL", "pts": 30, "j": 17, "v": 9, "e": 3, "d": 5, "gp": 31, "gc": 26, "sg": 5 },
-  { "pos": "12º", "team": "ADC MERCEDES BENZ", "pts": 29, "j": 17, "v": 9, "e": 2, "d": 6, "gp": 37, "gc": 26, "sg": 11 },
-  { "pos": "13º", "team": "A.D. SUZANO", "pts": 24, "j": 17, "v": 7, "e": 3, "d": 7, "gp": 34, "gc": 36, "sg": -2 },
-  { "pos": "14º", "team": "ASSOCIAÇÃO PAULISTA FUTEBOL CLUBE MOOCA", "pts": 22, "j": 17, "v": 6, "e": 4, "d": 7, "gp": 40, "gc": 41, "sg": -1 },
-  { "pos": "15º", "team": "S.E.R. CAIEIRAS", "pts": 18, "j": 17, "v": 5, "e": 3, "d": 9, "gp": 30, "gc": 39, "sg": -9 },
-  { "pos": "16º", "team": "INST. BONS DE BOLA", "pts": 18, "j": 17, "v": 5, "e": 3, "d": 9, "gp": 35, "gc": 52, "sg": -17 },
-  { "pos": "17º", "team": "GR GREMETAL", "pts": 16, "j": 17, "v": 5, "e": 1, "d": 11, "gp": 45, "gc": 60, "sg": -15 },
-  { "pos": "18º", "team": "ASSOCIAÇÃO DESPORTIVA SANTO ANDRE FUTSAL ", "pts": 14, "j": 17, "v": 4, "e": 2, "d": 11, "gp": 33, "gc": 57, "sg": -24 },
-  { "pos": "19º", "team": "AE FRIBURGO", "pts": 13, "j": 17, "v": 3, "e": 4, "d": 10, "gp": 30, "gc": 59, "sg": -29 },
-  { "pos": "20º", "team": "CTC VILA EMA", "pts": 12, "j": 16, "v": 4, "e": 0, "d": 12, "gp": 36, "gc": 57, "sg": -21 },
-  { "pos": "21º", "team": "CHUTE FUTSAL", "pts": 11, "j": 17, "v": 3, "e": 2, "d": 12, "gp": 27, "gc": 57, "sg": -30 },
-  { "pos": "22º", "team": "OCIAN PRAIA CLUBE", "pts": 8, "j": 17, "v": 2, "e": 2, "d": 13, "gp": 18, "gc": 40, "sg": -22 },
-  { "pos": "23º", "team": "AA WIMPRO GUARULHOS", "pts": 7, "j": 16, "v": 2, "e": 1, "d": 13, "gp": 19, "gc": 61, "sg": -42 },
-  { "pos": "24º", "team": "ASSOCIAçãO ESPORTIVA FUTMAX", "pts": 6, "j": 17, "v": 2, "e": 0, "d": 15, "gp": 19, "gc": 63, "sg": -44 }
+  { "pos": "1º", "team": "A. UNIÃO MAUÁ", "pts": 44, "j": 18, "v": 14, "e": 2, "d": 2, "gp": 54, "gc": 21, "sg": 33 },
+  { "pos": "2º", "team": "METALÚRGICOS DE JUNDIAÍ ", "pts": 41, "j": 18, "v": 13, "e": 2, "d": 3, "gp": 59, "gc": 30, "sg": 29 },
+  { "pos": "3º", "team": "SANTO ANDRÉ FUTSAL", "pts": 40, "j": 18, "v": 13, "e": 1, "d": 4, "gp": 66, "gc": 32, "sg": 34 },
+  { "pos": "4º", "team": "CLUBE BATALHA", "pts": 40, "j": 18, "v": 13, "e": 1, "d": 4, "gp": 48, "gc": 22, "sg": 26 },
+  { "pos": "5º", "team": "ADEF/COTIA", "pts": 38, "j": 18, "v": 12, "e": 2, "d": 4, "gp": 55, "gc": 27, "sg": 28 },
+  { "pos": "6º", "team": "SPORT BENFICA DE MOGI DAS CRUZES ", "pts": 37, "j": 18, "v": 12, "e": 1, "d": 5, "gp": 69, "gc": 36, "sg": 33 },
+  { "pos": "7º", "team": "ASSOCIAÇÃO ESPORTIVA RIVER DO BELÉM | RIVER DO BELÉM", "pts": 36, "j": 18, "v": 11, "e": 3, "d": 4, "gp": 57, "gc": 34, "sg": 23 },
+  { "pos": "8º", "team": "G.D.R. 7 DE SETEMBRO", "pts": 35, "j": 18, "v": 11, "e": 2, "d": 5, "gp": 62, "gc": 39, "sg": 23 },
+  { "pos": "9º", "team": "ASSOCIAÇÃO DESPORTIVA NANDO GRANA", "pts": 34, "j": 18, "v": 11, "e": 1, "d": 6, "gp": 59, "gc": 49, "sg": 10 },
+  { "pos": "10º", "team": "MX7 DIADEMA", "pts": 31, "j": 18, "v": 9, "e": 4, "d": 5, "gp": 52, "gc": 41, "sg": 11 },
+  { "pos": "11º", "team": "ADC MARVEL", "pts": 31, "j": 18, "v": 9, "e": 4, "d": 5, "gp": 33, "gc": 28, "sg": 5 },
+  { "pos": "12º", "team": "ADC MERCEDES BENZ", "pts": 30, "j": 18, "v": 9, "e": 3, "d": 6, "gp": 39, "gc": 28, "sg": 11 },
+  { "pos": "13º", "team": "A.D. SUZANO", "pts": 24, "j": 18, "v": 7, "e": 3, "d": 8, "gp": 37, "gc": 40, "sg": -3 },
+  { "pos": "14º", "team": "ASSOCIAÇÃO PAULISTA FUTEBOL CLUBE MOOCA", "pts": 23, "j": 18, "v": 6, "e": 5, "d": 7, "gp": 43, "gc": 44, "sg": -1 },
+  { "pos": "15º", "team": "S.E.R. CAIEIRAS", "pts": 21, "j": 18, "v": 6, "e": 3, "d": 9, "gp": 34, "gc": 42, "sg": -8 },
+  { "pos": "16º", "team": "GR GREMETAL", "pts": 19, "j": 18, "v": 6, "e": 1, "d": 11, "gp": 49, "gc": 63, "sg": -14 },
+  { "pos": "17º", "team": "CTC VILA EMA", "pts": 18, "j": 18, "v": 6, "e": 0, "d": 12, "gp": 41, "gc": 57, "sg": -16 },
+  { "pos": "18º", "team": "INST. BONS DE BOLA", "pts": 18, "j": 18, "v": 5, "e": 3, "d": 10, "gp": 38, "gc": 56, "sg": -18 },
+  { "pos": "19º", "team": "ASSOCIAÇÃO DESPORTIVA SANTO ANDRE FUTSAL ", "pts": 17, "j": 18, "v": 5, "e": 2, "d": 11, "gp": 39, "gc": 60, "sg": -21 },
+  { "pos": "20º", "team": "AE FRIBURGO", "pts": 13, "j": 18, "v": 3, "e": 4, "d": 11, "gp": 30, "gc": 65, "sg": -35 },
+  { "pos": "21º", "team": "CHUTE FUTSAL", "pts": 11, "j": 18, "v": 3, "e": 2, "d": 13, "gp": 30, "gc": 61, "sg": -31 },
+  { "pos": "22º", "team": "OCIAN PRAIA CLUBE", "pts": 8, "j": 18, "v": 2, "e": 2, "d": 14, "gp": 18, "gc": 42, "sg": -24 },
+  { "pos": "23º", "team": "AA WIMPRO GUARULHOS", "pts": 7, "j": 18, "v": 2, "e": 1, "d": 15, "gp": 21, "gc": 69, "sg": -48 },
+  { "pos": "24º", "team": "ASSOCIAçãO ESPORTIVA FUTMAX", "pts": 6, "j": 18, "v": 2, "e": 0, "d": 16, "gp": 22, "gc": 69, "sg": -47 }
 ];
 
     function renderClassification() {
