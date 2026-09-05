@@ -640,7 +640,7 @@ html.dark-mode .slider:before { transform: translateX(20px); }
 }
 
 .stats-cols .glass-panel {
-  height: 380px;
+  height: 500px;
   display: flex;
   flex-direction: column;
 }
@@ -1065,16 +1065,30 @@ const FIRST_FASE_GAMES = [
 // CLASSIFICAÇÃO SUB 9 DA 1ª FASE
 // =====================================================
 const CLASSIF_DATA = [
-  { pos: "1º", team: "SANTO ANDRÉ FUTSAL", pts: 55 },
-  { pos: "2º", team: "A. UNIÃO MAUÁ", pts: 53 },
-  { pos: "3º", team: "METALÚRGICOS DE JUNDIAÍ", pts: 52 },
-  { pos: "4º", team: "ADEF/COTIA", pts: 50 },
-  { pos: "5º", team: "CLUBE BATALHA", pts: 47 },
-  { pos: "6º", team: "SPORT BENFICA DE MOGI", pts: 46 },
-  { pos: "7º", team: "RIVER DO BELÉM", pts: 46 },
-  { pos: "8º", team: "MX7 DIADEMA", pts: 43 },
-  { pos: "9º", team: "AD NANDO GRANA", pts: 41 },
-  { pos: "10º", team: "G.D.R. 7 DE SETEMBRO", pts: 39 }
+  { pos: "1º", team: "SANTO ANDRÉ FUTSAL", pts: 55, j: 23, v: 18, e: 1, d: 4, gp: 86, gc: 39, sg: 47 },
+  { pos: "2º", team: "A. UNIÃO MAUÁ", pts: 53, j: 23, v: 17, e: 2, d: 4, gp: 68, gc: 30, sg: 38 },
+  { pos: "3º", team: "METALÚRGICOS DE JUNDIAÍ", pts: 52, j: 23, v: 16, e: 4, d: 3, gp: 77, gc: 39, sg: 38 },
+  { pos: "4º", team: "ADEF/COTIA", pts: 50, j: 23, v: 16, e: 2, d: 5, gp: 71, gc: 37, sg: 34 },
+  { pos: "5º", team: "CLUBE BATALHA", pts: 47, j: 23, v: 15, e: 2, d: 6, gp: 60, gc: 33, sg: 27 },
+  { pos: "6º", team: "SPORT BENFICA DE MOGI", pts: 46, j: 23, v: 15, e: 1, d: 7, gp: 83, gc: 49, sg: 34 },
+  { pos: "7º", team: "RIVER DO BELÉM", pts: 46, j: 23, v: 14, e: 4, d: 5, gp: 69, gc: 40, sg: 29 },
+  { pos: "8º", team: "MX7 DIADEMA", pts: 43, j: 23, v: 13, e: 4, d: 6, gp: 65, gc: 50, sg: 15 },
+  { pos: "9º", team: "AD NANDO GRANA", pts: 41, j: 23, v: 13, e: 2, d: 8, gp: 69, gc: 57, sg: 12 },
+  { pos: "10º", team: "G.D.R. 7 DE SETEMBRO", pts: 39, j: 23, v: 12, e: 3, d: 8, gp: 73, gc: 55, sg: 18 },
+  { pos: "11º", team: "ADC MARVEL", pts: 38, j: 23, v: 11, e: 5, d: 7, gp: 42, gc: 37, sg: 5 },
+  { pos: "12º", team: "ADC MERCEDES BENZ", pts: 33, j: 23, v: 10, e: 3, d: 10, gp: 44, gc: 37, sg: 7 },
+  { pos: "13º", team: "A. PAULISTA FC MOOCA", pts: 33, j: 23, v: 9, e: 6, d: 8, gp: 55, gc: 53, sg: 2 },
+  { pos: "14º", team: "A.D. SUZANO", pts: 30, j: 23, v: 9, e: 3, d: 11, gp: 48, gc: 49, sg: -1 },
+  { pos: "15º", team: "GR GREMETAL", pts: 29, j: 23, v: 9, e: 2, d: 12, gp: 68, gc: 74, sg: -6 },
+  { pos: "16º", team: "INST. BONS DE BOLA", pts: 25, j: 23, v: 7, e: 4, d: 12, gp: 44, gc: 72, sg: -28 },
+  { pos: "17º", team: "CTC VILA EMA", pts: 24, j: 23, v: 8, e: 0, d: 15, gp: 50, gc: 69, sg: -19 },
+  { pos: "18º", team: "S.E.R. CAIEIRAS", pts: 24, j: 23, v: 7, e: 3, d: 13, gp: 46, gc: 59, sg: -13 },
+  { pos: "19º", team: "AD SANTO ANDRÉ FUTSAL", pts: 21, j: 23, v: 6, e: 3, d: 14, gp: 51, gc: 76, sg: -25 },
+  { pos: "20º", team: "AE FRIBURGO", pts: 19, j: 23, v: 5, e: 4, d: 14, gp: 44, gc: 80, sg: -36 },
+  { pos: "21º", team: "CHUTE FUTSAL", pts: 17, j: 23, v: 5, e: 2, d: 16, gp: 43, gc: 81, sg: -38 },
+  { pos: "22º", team: "OCIAN PRAIA CLUBE", pts: 14, j: 23, v: 4, e: 2, d: 17, gp: 25, gc: 52, sg: -27 },
+  { pos: "23º", team: "AE FUTMAX", pts: 10, j: 23, v: 3, e: 1, d: 19, gp: 27, gc: 78, sg: -51 },
+  { pos: "24º", team: "AA WIMPRO GUARULHOS", pts: 7, j: 23, v: 2, e: 1, d: 20, gp: 26, gc: 88, sg: -62 }
 ];
 
 // =====================================================
@@ -1366,7 +1380,7 @@ function renderArtilharia() {
 // =====================================================
 function renderLastResults() {
   const container = document.getElementById('lastGamesList');
-  const finishedGames = [...FIRST_FASE_GAMES].reverse().slice(0, 8);
+  const finishedGames = [...FIRST_FASE_GAMES].reverse();
 
   container.innerHTML = finishedGames.map(g => {
     const isHomeOur = g.home.includes('METALÚRGICOS');
